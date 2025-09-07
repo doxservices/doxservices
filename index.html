@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoxServices | Intelligent DNA Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --primary: #0a2240;
+            --secondary: #1e4788;
+            --accent: #00b4d8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover {
+            background-color: #0099bb;
+            transform: translateY(-2px);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,181.3C960,181,1056,235,1152,229.3C1248,224,1344,160,1392,128L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 650px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 180, 216, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Industries Section */
+        .industries {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .industry-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .industry-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(10, 34, 64, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .industry-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Confidentiality Section */
+        .confidentiality {
+            padding: 80px 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .confidentiality-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .confidentiality-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .confidentiality-content p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .confidentiality-note {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .about-visual {
+            flex: 1;
+            position: relative;
+        }
+        
+        .data-visualization {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: var(--primary);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s;
+                gap: 30px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+    
+/* --- Injected: DNA imagery backgrounds --- */
+.dna-hero {
+  /* keep existing gradient; add DNA layer */
+  background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%), url('data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b4d8%22%20stop-opacity%3D%220.25%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300e0ff%22%20stop-opacity%3D%220.15%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3Cfilter%20id%3D%22blur%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%222%22/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22none%22/%3E%0A%20%20%3C%21--%20twin%20helices%20--%3E%0A%20%20%3Cpath%20d%3D%22M100%2050%20C%20180%20140%2C%20220%20220%2C%20300%20300%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20460%2C%20500%20540%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20700%2C%20700%20780%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%20940%2C%20900%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20700%2C%201100%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20460%2C%201300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20220%2C%201500%20140%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%228%22/%3E%0A%20%20%3Cpath%20d%3D%22M100%20140%20C%20180%20220%2C%20220%20300%2C%20300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20540%2C%20500%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20780%2C%20700%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%201020%2C%20900%20940%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20780%2C%201100%20700%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20540%2C%201300%20460%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20300%2C%201500%20220%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%226%22%20opacity%3D%220.8%22/%3E%0A%20%20%3C%21--%20cross%E2%80%91bars%20--%3E%0A%20%20%3Cg%20stroke%3D%22%238adfff%22%20stroke-opacity%3D%220.18%22%20filter%3D%22url%28%23blur%29%22%3E%0A%20%20%20%20%3Cline%20x1%3D%22180%22%20y1%3D%22240%22%20x2%3D%22240%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22270%22%20y1%3D%22300%22%20x2%3D%22330%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22360%22%20y1%3D%22360%22%20x2%3D%22420%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22450%22%20y1%3D%22120%22%20x2%3D%22510%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22540%22%20y1%3D%22180%22%20x2%3D%22600%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22630%22%20y1%3D%22240%22%20x2%3D%22690%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22720%22%20y1%3D%22300%22%20x2%3D%22780%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22810%22%20y1%3D%22360%22%20x2%3D%22870%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22900%22%20y1%3D%22120%22%20x2%3D%22960%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22990%22%20y1%3D%22180%22%20x2%3D%221050%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221080%22%20y1%3D%22240%22%20x2%3D%221140%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221170%22%20y1%3D%22300%22%20x2%3D%221230%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221260%22%20y1%3D%22360%22%20x2%3D%221320%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221350%22%20y1%3D%22120%22%20x2%3D%221410%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221440%22%20y1%3D%22180%22%20x2%3D%221500%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221530%22%20y1%3D%22240%22%20x2%3D%221590%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%20%20%3C/g%3E%0A%20%20%3C%21--%20particles%20--%3E%0A%20%20%3Cg%20fill%3D%22%2366d3ff%22%20opacity%3D%220.25%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22133%22%20cy%3D%2289%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22266%22%20cy%3D%22178%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22399%22%20cy%3D%22267%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22532%22%20cy%3D%22356%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22665%22%20cy%3D%22445%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22798%22%20cy%3D%22534%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22931%22%20cy%3D%22623%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221064%22%20cy%3D%22712%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221197%22%20cy%3D%22801%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221330%22%20cy%3D%22890%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221463%22%20cy%3D%2279%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221596%22%20cy%3D%22168%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22129%22%20cy%3D%22257%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22262%22%20cy%3D%22346%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22395%22%20cy%3D%22435%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22528%22%20cy%3D%22524%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22661%22%20cy%3D%22613%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22794%22%20cy%3D%22702%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22927%22%20cy%3D%22791%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221060%22%20cy%3D%22880%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221193%22%20cy%3D%2269%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221326%22%20cy%3D%22158%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221459%22%20cy%3D%22247%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221592%22%20cy%3D%22336%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22125%22%20cy%3D%22425%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22258%22%20cy%3D%22514%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22391%22%20cy%3D%22603%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22524%22%20cy%3D%22692%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22657%22%20cy%3D%22781%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22790%22%20cy%3D%22870%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22923%22%20cy%3D%2259%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221056%22%20cy%3D%22148%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221189%22%20cy%3D%22237%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221322%22%20cy%3D%22326%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221455%22%20cy%3D%22415%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221588%22%20cy%3D%22504%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22121%22%20cy%3D%22593%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22254%22%20cy%3D%22682%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22387%22%20cy%3D%22771%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22520%22%20cy%3D%22860%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22653%22%20cy%3D%2249%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22786%22%20cy%3D%22138%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22919%22%20cy%3D%22227%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221052%22%20cy%3D%22316%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221185%22%20cy%3D%22405%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221318%22%20cy%3D%22494%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221451%22%20cy%3D%22583%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221584%22%20cy%3D%22672%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22117%22%20cy%3D%22761%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22250%22%20cy%3D%22850%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22383%22%20cy%3D%2239%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22516%22%20cy%3D%22128%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22649%22%20cy%3D%22217%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22782%22%20cy%3D%22306%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22915%22%20cy%3D%22395%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221048%22%20cy%3D%22484%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221181%22%20cy%3D%22573%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221314%22%20cy%3D%22662%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221447%22%20cy%3D%22751%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221580%22%20cy%3D%22840%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22113%22%20cy%3D%2229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22246%22%20cy%3D%22118%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22379%22%20cy%3D%22207%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22512%22%20cy%3D%22296%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22645%22%20cy%3D%22385%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22778%22%20cy%3D%22474%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22911%22%20cy%3D%22563%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221044%22%20cy%3D%22652%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221177%22%20cy%3D%22741%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221310%22%20cy%3D%22830%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221443%22%20cy%3D%2219%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221576%22%20cy%3D%22108%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22109%22%20cy%3D%22197%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22242%22%20cy%3D%22286%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22375%22%20cy%3D%22375%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22508%22%20cy%3D%22464%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22641%22%20cy%3D%22553%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22774%22%20cy%3D%22642%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22907%22%20cy%3D%22731%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221040%22%20cy%3D%22820%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221173%22%20cy%3D%229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221306%22%20cy%3D%2298%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221439%22%20cy%3D%22187%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221572%22%20cy%3D%22276%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22105%22%20cy%3D%22365%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22238%22%20cy%3D%22454%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22371%22%20cy%3D%22543%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22504%22%20cy%3D%22632%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22637%22%20cy%3D%22721%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22770%22%20cy%3D%22810%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22903%22%20cy%3D%22899%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221036%22%20cy%3D%2288%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221169%22%20cy%3D%22177%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221302%22%20cy%3D%22266%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221435%22%20cy%3D%22355%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221568%22%20cy%3D%22444%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22101%22%20cy%3D%22533%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22234%22%20cy%3D%22622%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22367%22%20cy%3D%22711%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22500%22%20cy%3D%22800%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22633%22%20cy%3D%22889%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22766%22%20cy%3D%2278%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22899%22%20cy%3D%22167%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221032%22%20cy%3D%22256%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221165%22%20cy%3D%22345%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221298%22%20cy%3D%22434%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221431%22%20cy%3D%22523%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221564%22%20cy%3D%22612%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2297%22%20cy%3D%22701%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22230%22%20cy%3D%22790%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22363%22%20cy%3D%22879%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22496%22%20cy%3D%2268%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22629%22%20cy%3D%22157%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22762%22%20cy%3D%22246%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22895%22%20cy%3D%22335%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221028%22%20cy%3D%22424%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221161%22%20cy%3D%22513%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221294%22%20cy%3D%22602%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221427%22%20cy%3D%22691%22%20r%3D%225%22/%3E%3C/g%3E%0A%3C/svg%3E');
+  background-size: cover;
+  background-position: center;
+}
+.dna-panel {
+  background-image: linear-gradient(rgba(10,34,64,0.65), rgba(30,71,136,0.65)), url('data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b4d8%22%20stop-opacity%3D%220.25%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300e0ff%22%20stop-opacity%3D%220.15%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3Cfilter%20id%3D%22blur%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%222%22/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22none%22/%3E%0A%20%20%3C%21--%20twin%20helices%20--%3E%0A%20%20%3Cpath%20d%3D%22M100%2050%20C%20180%20140%2C%20220%20220%2C%20300%20300%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20460%2C%20500%20540%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20700%2C%20700%20780%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%20940%2C%20900%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20700%2C%201100%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20460%2C%201300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20220%2C%201500%20140%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%228%22/%3E%0A%20%20%3Cpath%20d%3D%22M100%20140%20C%20180%20220%2C%20220%20300%2C%20300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20540%2C%20500%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20780%2C%20700%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%201020%2C%20900%20940%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20780%2C%201100%20700%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20540%2C%201300%20460%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20300%2C%201500%20220%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%226%22%20opacity%3D%220.8%22/%3E%0A%20%20%3C%21--%20cross%E2%80%91bars%20--%3E%0A%20%20%3Cg%20stroke%3D%22%238adfff%22%20stroke-opacity%3D%220.18%22%20filter%3D%22url%28%23blur%29%22%3E%0A%20%20%20%20%3Cline%20x1%3D%22180%22%20y1%3D%22240%22%20x2%3D%22240%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22270%22%20y1%3D%22300%22%20x2%3D%22330%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22360%22%20y1%3D%22360%22%20x2%3D%22420%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22450%22%20y1%3D%22120%22%20x2%3D%22510%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22540%22%20y1%3D%22180%22%20x2%3D%22600%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22630%22%20y1%3D%22240%22%20x2%3D%22690%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22720%22%20y1%3D%22300%22%20x2%3D%22780%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22810%22%20y1%3D%22360%22%20x2%3D%22870%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22900%22%20y1%3D%22120%22%20x2%3D%22960%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22990%22%20y1%3D%22180%22%20x2%3D%221050%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221080%22%20y1%3D%22240%22%20x2%3D%221140%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221170%22%20y1%3D%22300%22%20x2%3D%221230%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221260%22%20y1%3D%22360%22%20x2%3D%221320%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221350%22%20y1%3D%22120%22%20x2%3D%221410%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221440%22%20y1%3D%22180%22%20x2%3D%221500%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221530%22%20y1%3D%22240%22%20x2%3D%221590%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%20%20%3C/g%3E%0A%20%20%3C%21--%20particles%20--%3E%0A%20%20%3Cg%20fill%3D%22%2366d3ff%22%20opacity%3D%220.25%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22133%22%20cy%3D%2289%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22266%22%20cy%3D%22178%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22399%22%20cy%3D%22267%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22532%22%20cy%3D%22356%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22665%22%20cy%3D%22445%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22798%22%20cy%3D%22534%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22931%22%20cy%3D%22623%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221064%22%20cy%3D%22712%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221197%22%20cy%3D%22801%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221330%22%20cy%3D%22890%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221463%22%20cy%3D%2279%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221596%22%20cy%3D%22168%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22129%22%20cy%3D%22257%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22262%22%20cy%3D%22346%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22395%22%20cy%3D%22435%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22528%22%20cy%3D%22524%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22661%22%20cy%3D%22613%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22794%22%20cy%3D%22702%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22927%22%20cy%3D%22791%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221060%22%20cy%3D%22880%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221193%22%20cy%3D%2269%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221326%22%20cy%3D%22158%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221459%22%20cy%3D%22247%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221592%22%20cy%3D%22336%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22125%22%20cy%3D%22425%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22258%22%20cy%3D%22514%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22391%22%20cy%3D%22603%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22524%22%20cy%3D%22692%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22657%22%20cy%3D%22781%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22790%22%20cy%3D%22870%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22923%22%20cy%3D%2259%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221056%22%20cy%3D%22148%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221189%22%20cy%3D%22237%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221322%22%20cy%3D%22326%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221455%22%20cy%3D%22415%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221588%22%20cy%3D%22504%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22121%22%20cy%3D%22593%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22254%22%20cy%3D%22682%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22387%22%20cy%3D%22771%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22520%22%20cy%3D%22860%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22653%22%20cy%3D%2249%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22786%22%20cy%3D%22138%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22919%22%20cy%3D%22227%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221052%22%20cy%3D%22316%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221185%22%20cy%3D%22405%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221318%22%20cy%3D%22494%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221451%22%20cy%3D%22583%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221584%22%20cy%3D%22672%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22117%22%20cy%3D%22761%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22250%22%20cy%3D%22850%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22383%22%20cy%3D%2239%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22516%22%20cy%3D%22128%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22649%22%20cy%3D%22217%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22782%22%20cy%3D%22306%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22915%22%20cy%3D%22395%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221048%22%20cy%3D%22484%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221181%22%20cy%3D%22573%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221314%22%20cy%3D%22662%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221447%22%20cy%3D%22751%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221580%22%20cy%3D%22840%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22113%22%20cy%3D%2229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22246%22%20cy%3D%22118%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22379%22%20cy%3D%22207%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22512%22%20cy%3D%22296%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22645%22%20cy%3D%22385%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22778%22%20cy%3D%22474%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22911%22%20cy%3D%22563%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221044%22%20cy%3D%22652%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221177%22%20cy%3D%22741%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221310%22%20cy%3D%22830%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221443%22%20cy%3D%2219%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221576%22%20cy%3D%22108%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22109%22%20cy%3D%22197%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22242%22%20cy%3D%22286%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22375%22%20cy%3D%22375%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22508%22%20cy%3D%22464%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22641%22%20cy%3D%22553%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22774%22%20cy%3D%22642%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22907%22%20cy%3D%22731%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221040%22%20cy%3D%22820%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221173%22%20cy%3D%229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221306%22%20cy%3D%2298%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221439%22%20cy%3D%22187%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221572%22%20cy%3D%22276%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22105%22%20cy%3D%22365%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22238%22%20cy%3D%22454%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22371%22%20cy%3D%22543%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22504%22%20cy%3D%22632%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22637%22%20cy%3D%22721%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22770%22%20cy%3D%22810%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22903%22%20cy%3D%22899%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221036%22%20cy%3D%2288%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221169%22%20cy%3D%22177%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221302%22%20cy%3D%22266%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221435%22%20cy%3D%22355%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221568%22%20cy%3D%22444%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22101%22%20cy%3D%22533%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22234%22%20cy%3D%22622%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22367%22%20cy%3D%22711%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22500%22%20cy%3D%22800%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22633%22%20cy%3D%22889%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22766%22%20cy%3D%2278%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22899%22%20cy%3D%22167%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221032%22%20cy%3D%22256%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221165%22%20cy%3D%22345%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221298%22%20cy%3D%22434%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221431%22%20cy%3D%22523%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221564%22%20cy%3D%22612%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2297%22%20cy%3D%22701%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22230%22%20cy%3D%22790%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22363%22%20cy%3D%22879%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22496%22%20cy%3D%2268%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22629%22%20cy%3D%22157%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22762%22%20cy%3D%22246%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22895%22%20cy%3D%22335%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221028%22%20cy%3D%22424%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221161%22%20cy%3D%22513%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221294%22%20cy%3D%22602%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221427%22%20cy%3D%22691%22%20r%3D%225%22/%3E%3C/g%3E%0A%3C/svg%3E');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+@media (max-width: 768px){
+    
+}
+
+
+
+
+.hero.dna-hero {
+  background-image:
+    linear-gradient(160deg, rgba(11, 37, 69, 0.60) 0%, rgba(17, 68, 119, 0.60) 100%),
+    url('https://raw.githubusercontent.com/xhemmings/doxservices/main/hero_dna.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+}
+
+
+
+@media (max-width: 768px){
+  
+  
+}
+
+
+.logo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo .tagline{
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+@media (max-width: 768px){
+  .logo .tagline{
+    font-size: 0.72rem;
+  }
+}
+
+
+
+
+@media (min-width: 1024px){
+  
+}
+
+
+
+
+
+
+.data-visualization.dna-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 360px;   /* gives the chart room; adjust if you want taller */
+  padding: 8px 0;
+  overflow: hidden;    /* keep it tidy if something overshoots */
+}
+.data-visualization.dna-panel img.chart-figure{
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;   /* prevent horizontal stretch */
+  height: auto !important;  /* prevent vertical stretch */
+  display: block;
+}
+@media (max-width: 768px){
+  .data-visualization.dna-panel{
+    min-height: 280px;
+    padding: 6px 0;
+  }
+}
+
+
+/* Brand lockup: "DoxServices" — Dox (white) + Services (accent) */
+.logo .brandline{
+  color: #ffffff;              /* Dox */
+  font-weight: 700;
+  letter-spacing: 0;           /* tight like the reference */
+}
+.logo .brandline span{
+  color: var(--accent);        /* Services -> #00b4d8 */
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><span class="brandline">Dox<span>Services</span></span><span class="tagline">INTELLIGENT DNA</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#" class="cta-button">Contact Us</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero dna-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Intelligent Solutions for Digital Transformation</h1>
+                <p>Leverage AI, Business Intelligence, and cutting-edge digital strategies to accelerate your business growth and outperform competitors.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="cta-button">Get Started</a>
+                    <a href="#" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions to drive your digital success</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Advanced machine learning and AI solutions to automate processes, gain insights, and enhance decision-making.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transform your data into actionable intelligence with our powerful BI tools and dashboards.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Data-driven marketing strategies that increase brand visibility, engagement, and conversion rates.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Comprehensive SEO services to improve your search engine rankings and drive qualified traffic.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>End-to-end project management solutions ensuring your initiatives are delivered on time and within budget.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Software Development</h3>
+                    <p>Custom software solutions tailored to your specific business needs and challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trusted by Leading Industries</h2>
+                <p>We deliver exceptional value across diverse sectors</p>
+            </div>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Banking & Finance</h3>
+                    <p>Secure financial solutions and data analytics for the banking sector.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tower-cell"></i>
+                    </div>
+                    <h3>Telecommunications</h3>
+                    <p>Network optimization and customer experience solutions for telecom providers.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Healthcare & Life Sciences</h3>
+                    <p>AI-powered diagnostics and healthcare data management solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3>Oil & Energy</h3>
+                    <p>Optimization solutions for energy production and distribution.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Shipping & Logistics</h3>
+                    <p>Supply chain optimization and logistics management systems.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Industrial IoT and smart manufacturing solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Stock Exchanges</h3>
+                    <p>High-frequency trading algorithms and market analysis tools.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Aviation</h3>
+                    <p>Flight optimization, predictive maintenance, and aviation technology solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Private Defense</h3>
+                    <p>Security systems, threat analysis, and defense technology solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidentiality Section -->
+    <section class="confidentiality">
+        <div class="container">
+            <div class="confidentiality-content">
+                <h2>Confidentiality & Discretion Guaranteed</h2>
+                <p>At DoxServices, we understand the sensitive nature of Fortune 100 business operations. Our protocols ensure complete confidentiality for all client engagements.</p>
+                
+                <div class="confidentiality-note">
+                    <p>"Due to the confidential nature of our work, we do not publicly disclose client names. DoxServices serves some of the world's leading banks, telecom providers, energy & logistics companies and manufacturing giants, competing at the scale of McKenney and beyond."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Global Leaders in AI-Powered Solutions</h2>
+                    <p>With over a decade of experience, we help Fortune 100 companies leverage cutting-edge technology to transform their digital presence and drive measurable results.</p>
+                    <p>Our team of data scientists, marketing experts, and AI specialists work together to create customized solutions that address your unique business challenges.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Client Retention</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Global Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">Avg. Growth</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="data-visualization dna-panel"><img class="chart-figure" src="https://raw.githubusercontent.com/xhemmings/doxservices/main/hero_chart.png" alt="Data visualization chart" /></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Schedule a consultation with our experts to discover how our AI-driven solutions can propel your business forward.</p>
+            <a href="#" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DoxServices</h3>
+                    <p>Driving digital transformation through AI, BI, and innovative marketing solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Artificial Intelligence</a></li>
+                        <li><a href="#">Business Intelligence</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Software Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, San Francisco, CA</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@doxservices.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 DoxServices. All rights reserved. doxservices.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const industryCards = document.querySelectorAll('.industry-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            serviceCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            industryCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
