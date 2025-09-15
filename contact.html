@@ -448,7 +448,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h3>Our Location</h3>
-                    <p>123 Tech Avenue, San Francisco, CA 94103</p>
+                    <p>3720 Renovation Ave, New Jersey, USA</p>
                 </div>
                 
                 <div class="info-card">
@@ -456,7 +456,7 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Phone Number</h3>
-                    <p>+1 (555) 123-4567</p>
+                    <p>+18765076645</p>
                 </div>
                 
                 <div class="info-card">
@@ -464,7 +464,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email Address</h3>
-                    <p>info@doxservices.com</p>
+                    <p>doxcorp.services@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -510,9 +510,9 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, San Francisco, CA</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@doxservices.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 3720 Renovation Ave, New Jersey, USA</li>
+                        <li><i class="fas fa-phone"></i> +18765076645</li>
+                        <li><i class="fas fa-envelope"></i> doxcorp.services@gmail.com</li>
                     </ul>
                 </div>
             </div>
@@ -574,6 +574,27 @@
                 observer.observe(card);
             });
         });
+    </script>
+
+    <!-- Metadata script injection -->
+    <script>
+      fetch('site.meta.json')
+        .then(response => response.json())
+        .then(function(data) {
+          document.querySelectorAll('.fa-map-marker-alt').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + data.address;
+          });
+          document.querySelectorAll('.fa-phone').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-phone"></i> ' + data.business_phone;
+          });
+          document.querySelectorAll('.fa-envelope').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-envelope"></i> ' + data.contact_email;
+          });
+        })
+        .catch(function(err) { console.error('Failed to load metadata:', err); });
     </script>
 </body>
 </html>
