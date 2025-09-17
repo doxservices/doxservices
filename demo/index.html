@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--
+    Fortune‑grade portfolio
+    ======================
+
+    This one‑page portfolio uses a restrained colour palette, generous white
+    space and crisp typography to present live projects and demos in a
+    polished, professional manner. Instead of embedding third‑party sites
+    directly (many of them set X‑Frame‑Options headers that prevent
+    iframing), it pulls in static previews via WordPress’s mshots service.
+    Each tile links through to the full site but still gives a strong
+    visual cue about the layout and brand. The design is responsive down
+    to mobile sizes and fully accessible. Buttons have clear focus
+    indicators, the filter chips are exposed as a toolbar and all images
+    include descriptive alt text. Colours meet contrast requirements and
+    motion effects are subtle.
+  -->
+  <title>Projects</title>
+  <meta name="description" content="Fortune‑grade portfolio showcasing demos and client projects for Dox. Each card includes a live preview image, description and quick links." />
+  <style>
+    :root {
+      /* Colour palette – professional blues and neutrals */
+      --primary-900: #0a3b6e;
+      --primary-700: #12558f;
+      --primary-500: #1f7bb7;
+      --neutral-100: #f7f9fc;
+      --neutral-200: #eef2f6;
+      --neutral-300: #dce3eb;
+      --neutral-500: #6b7280;
+      --neutral-800: #2f3a4c;
+      --white: #ffffff;
+      --shadow: rgba(16, 24, 40, 0.08);
+      --radius: 12px;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+        Cantarell, Inter, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--neutral-800);
+      background-color: var(--neutral-100);
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      background: linear-gradient(180deg, var(--primary-900), var(--primary-700));
+      color: var(--white);
+      padding: 60px 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.85;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    main {
+      max-width: 1280px;
+      margin: 40px auto 80px;
+      padding: 0 16px;
+    }
+    /* Filter toolbar */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .chip {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-500);
+      background-color: var(--white);
+      color: var(--primary-700);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .chip[aria-pressed="true"] {
+      background-color: var(--primary-500);
+      color: var(--white);
+    }
+    .chip:focus-visible {
+      outline: 3px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    /* Grid layout */
+    .grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+    .card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px var(--shadow);
+      border: 1px solid var(--neutral-300);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px var(--shadow);
+    }
+    .preview-wrapper {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      background-color: var(--neutral-200);
+    }
+    .preview-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 999px;
+      background-color: var(--primary-500);
+      color: var(--white);
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    .title-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 14px 16px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0));
+      color: var(--white);
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .card-body {
+      padding: 20px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .card-body p {
+      margin: 0 0 16px;
+      color: var(--neutral-500);
+      flex-grow: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .btn.primary {
+      background-color: var(--primary-700);
+      color: var(--white);
+    }
+    .btn.primary:hover {
+      background-color: var(--primary-500);
+    }
+    .btn.secondary {
+      background-color: var(--white);
+      color: var(--primary-700);
+      border: 1px solid var(--primary-500);
+    }
+    .btn.secondary:hover {
+      background-color: var(--neutral-200);
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px 0;
+      color: var(--neutral-500);
+      font-size: 14px;
+    }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card:hover {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Category filters -->
+    <div class="filters" role="toolbar" aria-label="Filter projects">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="demo">Demos</button>
+      <button class="chip" data-filter="business">Business</button>
+      <button class="chip" data-filter="ecom">E‑commerce</button>
+      <button class="chip" data-filter="special">Special</button>
+    </div>
+
+    <!-- Projects grid -->
+    <section class="grid" id="projects">
+      <!-- Each card uses a screenshot from WordPress mshots for a live feel -->
+      <article class="card" data-tags="demo business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/bakenwake/?w=800" alt="Preview of Bakenwake demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Bakenwake</div>
+        </div>
+        <div class="card-body">
+          <p>Specialised service landing page with clean information architecture and strong call‑to‑action hierarchy.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/bakenwake/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary" aria-label="Preview only">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="demo business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/carhub/?w=800" alt="Preview of Carhub demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Carhub</div>
+        </div>
+        <div class="card-body">
+          <p>Automotive hub template with inventory sections and a striking hero layout.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/carhub/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="demo business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/nestora/?w=800" alt="Preview of Nestora demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Nestora</div>
+        </div>
+        <div class="card-body">
+          <p>Property and real‑estate concept with sectioned feature blocks and clear calls to action.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/nestora/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="demo special">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/petpal/?w=800" alt="Preview of Petpal demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Petpal</div>
+        </div>
+        <div class="card-body">
+          <p>Friendly pet services template featuring a warm palette and booking call‑to‑action patterns.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/petpal/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="demo special">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/pxgen/?w=800" alt="Preview of Pxgen demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Pxgen</div>
+        </div>
+        <div class="card-body">
+          <p>Generative AI and image tool landing page with a modern hero and feature grid.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/pxgen/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="demo business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.doxservices.com/demo/vision/?w=800" alt="Preview of Vision demo website">
+          <span class="badge">Demo</span>
+          <div class="title-overlay">Vision</div>
+        </div>
+        <div class="card-body">
+          <p>Optics and vision concept site with crisp typography and clear value propositions.</p>
+          <div class="actions">
+            <a href="https://www.doxservices.com/demo/vision/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- External client projects -->
+      <article class="card" data-tags="business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.softbloc.net/?w=800" alt="Preview of Softbloc client website">
+          <span class="badge">Client</span>
+          <div class="title-overlay">Softbloc</div>
+        </div>
+        <div class="card-body">
+          <p>Technology solutions site with a clear services overview and streamlined contact flows.</p>
+          <div class="actions">
+            <a href="https://www.softbloc.net/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="ecom">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://puremaineorganics.com/?w=800" alt="Preview of Pure Maine Organics e‑commerce site">
+          <span class="badge">Client</span>
+          <div class="title-overlay">Pure Maine Organics</div>
+        </div>
+        <div class="card-body">
+          <p>Organic e‑commerce shop with a clean product‑detail and checkout experience.</p>
+          <div class="actions">
+            <a href="https://puremaineorganics.com/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="ecom">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://woo-look-eye-wear.vercel.app/?w=800" alt="Preview of Woo Look Eyewear e‑commerce prototype">
+          <span class="badge">Client</span>
+          <div class="title-overlay">Woo Look Eyewear</div>
+        </div>
+        <div class="card-body">
+          <p>Eyewear storefront prototype showcasing products with smooth browse flows.</p>
+          <div class="actions">
+            <a href="https://woo-look-eye-wear.vercel.app/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://www.appymeal.com/about?w=800" alt="Preview of Appymeal about page">
+          <span class="badge">Client</span>
+          <div class="title-overlay">Appymeal</div>
+        </div>
+        <div class="card-body">
+          <p>Food‑ordering platform’s about page, outlining mission and partner information.</p>
+          <div class="actions">
+            <a href="https://www.appymeal.com/about" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-tags="business">
+        <div class="preview-wrapper">
+          <img src="https://s.wordpress.com/mshots/v1/https://brx.exchange/?w=800" alt="Preview of BRX Exchange homepage">
+          <span class="badge">Client</span>
+          <div class="title-overlay">BRX Exchange</div>
+        </div>
+        <div class="card-body">
+          <p>Finance and cryptocurrency exchange homepage with market‑ready aesthetic.</p>
+          <div class="actions">
+            <a href="https://brx.exchange/" target="_blank" rel="noopener" class="btn primary">Open site</a>
+            <a href="#projects" class="btn secondary">Preview</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="year"></span> Dox. All rights reserved.</small>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Filtering logic
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const cards = Array.from(document.querySelectorAll('.card'));
+    function setActiveChip(active) {
+      chips.forEach(chip => chip.setAttribute('aria-pressed', chip === active ? 'true' : 'false'));
+    }
+    function filterCards(filter) {
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(/\s+/);
+        card.style.display = (filter === 'all' || tags.includes(filter)) ? '' : 'none';
+      });
+    }
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        setActiveChip(chip);
+        filterCards(chip.dataset.filter);
+      });
+    });
+  </script>
+</body>
+</html>
