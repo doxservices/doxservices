@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- Dealership Name -->TNC Carhub — Premium Vehicles, Honest Deals</title>
+  <meta name="description" content="Browse certified new and used cars. Book a test drive, get financing, and trade‑in quotes in minutes." />
+  <style>
+    :root{
+      --bg:#0f1115;          /* page background */
+      --paper:#ffffff;       /* card/body */
+      --muted:#6b7280;       /* secondary text */
+      --ink:#0b0d12;         /* headings */
+      --brand:#e31b23;       /* primary red */
+      --brand-ink:#ffffff;   /* on-primary */
+      --line:#eceef2;        /* borders */
+      --dark:#0b0d12;        /* footer bar */
+    }
+    html,body{height:100%;}
+    body{margin:0;background:#f6f7fb;color:#111;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.15rem;border-radius:.6rem;border:1px solid transparent;font-weight:600}
+    .btn.primary{background:var(--brand);color:var(--brand-ink)}
+    .btn.secondary{background:#fff;border-color:var(--line);color:#111}
+    .btn.ghost{background:transparent;border-color:var(--line);color:#111}
+    .badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .6rem;border-radius:999px;background:#101319;color:#e5e7eb;border:1px solid #222}
+    header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand svg{width:36px;height:36px}
+    .nav a{color:#111;font-weight:600}
+    .nav > nav{display:flex;gap:1.25rem}
+    .nav-cta{display:flex;gap:.6rem}
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{position:relative;background:#0f1115;color:#fff}
+    .hero .inner{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:end;padding:3.5rem 0}
+    .hero h1{font-size:clamp(28px,3.2vw,44px);line-height:1.15;margin:0 0 .75rem}
+    .hero p{color:#d1d5db;margin:0 0 1.25rem}
+    .hero .actions{display:flex;flex-wrap:wrap;gap:.75rem}
+    .hero .stats{display:flex;gap:2rem;margin-top:1.25rem;font-weight:600;color:#e5e7eb}
+    .hero .glass{position:relative;border-radius:16px;overflow:hidden}
+    .hero .glass img{border-radius:16px;filter:contrast(1.02) saturate(1.05)}
+    .hero .dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:.4rem}
+    .hero .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.45)}
+    .hero .dot.active{background:#fff}
+
+    /* Feature icons */
+    .features{background:#fff;border-bottom:1px solid var(--line)}
+    .features .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.5rem 0}
+    .feature{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem;display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:center}
+    .feature svg{width:36px;height:36px}
+    .feature h4{margin:0;font-size:1rem}
+    .feature p{margin:.2rem 0 0;color:var(--muted);font-size:.925rem}
+
+    /* About */
+    .about{padding:3rem 0;}
+    .about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .about h2{margin:0 0 .5rem;font-size:clamp(24px,2.8vw,36px)}
+    .about p{color:#4b5563}
+
+    /* Inventory */
+    .inventory{padding:2.5rem 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:1rem}
+    .section-head h3{margin:0;font-size:clamp(22px,2.4vw,30px)}
+    .filters{display:flex;gap:.6rem;flex-wrap:wrap}
+    .filters select,.filters input{padding:.6rem .7rem;border:1px solid var(--line);border-radius:.55rem;background:#fff}
+
+    .cars{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .car{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .car .meta{padding:1rem;display:grid;gap:.35rem;border-top:1px solid var(--line)}
+    .price{font-weight:800}
+    .pill{display:inline-block;padding:.15rem .5rem;border-radius:999px;background:#f1f5f9;color:#0b1220;font-size:.8rem}
+
+    /* Logos */
+    .brands{padding:2.25rem 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .brands .row{display:grid;grid-template-columns:repeat(8,1fr);gap:1rem;filter:grayscale(1)}
+    .brands .cell{background:#fff;border:1px solid var(--line);border-radius:10px;height:64px;display:grid;place-items:center}
+
+    /* Team */
+    .team{padding:2.5rem 0}
+    .team .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .person{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .person .info{padding:.8rem}
+    .person .role{color:var(--muted);font-size:.9rem}
+
+    /* FAQ */
+    .faq{background:#0b1220;color:#fff}
+    .faq .wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2.75rem 0}
+    .qa{background:#0f1625;border:1px solid #1e293b;border-radius:12px}
+    .qa h4{margin:0}
+    details{border-bottom:1px solid #1e293b}
+    details:last-child{border-bottom:none}
+    summary{list-style:none;cursor:pointer;padding:1rem 1.1rem;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    .qa div{padding:0 1.1rem 1rem;color:#cbd5e1}
+
+    /* Newsletter */
+    .newsletter{background:#101319;color:#e5e7eb}
+    .newsletter .bar{display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:center;padding:1.5rem;border:1px solid #1f2937;border-radius:12px}
+    .newsletter input{padding:.85rem .9rem;border-radius:.6rem;border:1px solid #334155;background:#0b0f17;color:#fff}
+
+    /* Footer */
+    footer{background:#0b0d12;color:#cbd5e1;border-top:1px solid #1f2430}
+    footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:1.5rem;padding:2.25rem 0}
+    footer h5{margin:.25rem 0 .75rem;color:#fff}
+    footer a{color:#cbd5e1}
+    .subfoot{border-top:1px solid #1f2430;padding:1rem 0;color:#94a3b8;font-size:.95rem}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero .inner{grid-template-columns:1fr;align-items:center}
+      .features .grid{grid-template-columns:repeat(2,1fr)}
+      .about .wrap{grid-template-columns:1fr}
+      .cars{grid-template-columns:repeat(2,1fr)}
+      .brands .row{grid-template-columns:repeat(4,1fr)}
+      .team .grid{grid-template-columns:repeat(2,1fr)}
+      .faq .wrap{grid-template-columns:1fr}
+      footer .cols{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 600px){
+      .nav > nav{display:none}
+      .menu-btn{display:inline-flex}
+      .cars{grid-template-columns:1fr}
+      .brands .row{grid-template-columns:repeat(3,1fr)}
+      footer .cols{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar / Navigation -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <!-- Simple SVG logo placeholder -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="26" width="60" height="12" rx="6" fill="var(--brand)"/>
+          <path d="M10 38h-4c0-9 7-16 16-16h16c9 0 16 7 16 16h-4c0-7-5-12-12-12H22c-7 0-12 5-12 12Z" fill="#fff"/>
+        </svg>
+        <strong>TNC Carhub</strong>
+      </div>
+      <nav>
+        <a href="#inventory">Inventory</a>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#trade">Trade‑in</a>
+        <a class="btn primary" href="#book">Book a Test Drive</a>
+        <button class="menu-btn btn secondary" aria-label="Open menu" onclick="toggleMobileNav()">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav (script toggles) -->
+  <div id="mnav" hidden style="border-bottom:1px solid var(--line);background:#fff">
+    <div class="container" style="display:grid;gap:.5rem;padding:.75rem 0 .9rem">
+      <a href="#inventory">Inventory</a>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container inner">
+      <div>
+        <span class="badge" aria-label="Selling point"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M12 2l3 7h7l-5.5 4 2.5 7-7-4.5L5.5 20 8 13 2 9h7l3-7Z" fill="#fbbf24"/></svg> New season arrivals</span>
+        <h1>Meet the new stars of our showroom</h1>
+        <p>Certified vehicles, transparent pricing, fast financing. Book a test drive and get a trade‑in quote in minutes.</p>
+        <div class="actions">
+          <a class="btn primary" href="#inventory">Browse Inventory</a>
+          <a class="btn secondary" href="#book">Get Pre‑Approved</a>
+        </div>
+        <div class="stats" aria-label="Highlights">
+          <div>150+ cars in stock</div>
+          <div>7‑day exchange</div>
+          <div>180‑point inspection</div>
+        </div>
+      </div>
+      <div class="glass">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1400&auto=format&fit=crop" alt="Showroom vehicle" />
+        <div class="dots" aria-hidden="true">
+          <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature icons row -->
+  <section class="features">
+    <div class="container grid">
+      <div class="feature">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 17h16M5 7h14a2 2 0 0 1 2 2v8H3V9a2 2 0 0 1 2-2Zm3 9v1m8-1v1" stroke="#0b0d12" stroke-width="1.5" fill="none"/></svg>
+        <div><h4>Find a Car</h4><p>Search by make, model, price and mileage.</p></div>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18m-7-7h14" stroke="#0b0d12" stroke-width="1.5" fill="none"/></svg>
+        <div><h4>Pre‑Order</h4><p>Reserve incoming units before they land.</p></div>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16M4 6h16M4 18h10" stroke="#0b0d12" stroke-width="1.5" fill="none"/></svg>
+        <div><h4>Latest Cars</h4><p>Fresh inventory updated daily.</p></div>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a6 6 0 0 1 6 6v2h1a3 3 0 0 1 0 6h-1v5H6v-5H5a3 3 0 0 1 0-6h1V8a6 6 0 0 1 6-6Z" stroke="#0b0d12" stroke-width="1.5" fill="none"/></svg>
+        <div><h4>Used & Certified</h4><p>Warranty and inspection on select models.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container wrap">
+      <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1400&auto=format&fit=crop" alt="Row of cars" />
+      <div>
+        <h2>About TNC Carhub</h2>
+        <p>We’re a straight‑talk dealership focused on quality vehicles and zero games. Every car is inspected, priced against the market, and backed by real people you can call. Need financing or trade‑in? Done.</p>
+        <div style="display:flex;gap:.6rem;margin-top:1rem">
+          <a class="btn primary" href="#book">Book a Test Drive</a>
+          <a class="btn secondary" href="#contact">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inventory -->
+  <section id="inventory" class="inventory">
+    <div class="container">
+      <div class="section-head">
+        <h3>Featured Cars</h3>
+        <form class="filters" onsubmit="event.preventDefault()" aria-label="Inventory filters">
+          <select aria-label="Make"><option>Any Make</option><option>Toyota</option><option>Honda</option><option>BMW</option><option>Mercedes</option></select>
+          <select aria-label="Body"><option>Any Body</option><option>Sedan</option><option>SUV</option><option>Truck</option><option>Coupe</option></select>
+          <input type="number" placeholder="Max Price" aria-label="Max price" />
+          <button class="btn secondary" type="button" onclick="alert('Hook this to your data source.')">Apply</button>
+        </form>
+      </div>
+
+      <div class="cars">
+        <!-- Card 1 -->
+        <article class="car">
+          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1400&auto=format&fit=crop" alt="2020 Toyota Supra"/>
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>2020 Toyota Supra 3.0</strong>
+              <span class="pill">12,400 mi</span>
+            </div>
+            <div class="price">$48,900</div>
+            <div style="color:#4b5563">Auto • RWD • Premium</div>
+            <div style="display:flex;gap:.5rem;margin-top:.4rem">
+              <a class="btn secondary" href="#book">Test Drive</a>
+              <a class="btn primary" href="#lead">I'm Interested</a>
+            </div>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="car">
+          <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1400&auto=format&fit=crop" alt="2019 Mercedes C300"/>
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>2019 Mercedes‑Benz C300</strong>
+              <span class="pill">23,100 mi</span>
+            </div>
+            <div class="price">$31,750</div>
+            <div style="color:#4b5563">Auto • RWD • Sunroof</div>
+            <div style="display:flex;gap:.5rem;margin-top:.4rem">
+              <a class="btn secondary" href="#book">Test Drive</a>
+              <a class="btn primary" href="#lead">I'm Interested</a>
+            </div>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="car">
+          <img src="https://images.unsplash.com/photo-1549921296-3fdc4f6a3f58?q=80&w=1400&auto=format&fit=crop" alt="2021 Toyota Hilux"/>
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>2021 Toyota Hilux</strong>
+              <span class="pill">9,850 mi</span>
+            </div>
+            <div class="price">$36,900</div>
+            <div style="color:#4b5563">4x4 • Diesel • Crew Cab</div>
+            <div style="display:flex;gap:.5rem;margin-top:.4rem">
+              <a class="btn secondary" href="#book">Test Drive</a>
+              <a class="btn primary" href="#lead">I'm Interested</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Logos -->
+  <section class="brands" aria-label="Our brands">
+    <div class="container row">
+      <div class="cell">Toyota</div>
+      <div class="cell">Honda</div>
+      <div class="cell">Nissan</div>
+      <div class="cell">BMW</div>
+      <div class="cell">Mercedes</div>
+      <div class="cell">Audi</div>
+      <div class="cell">Hyundai</div>
+      <div class="cell">Kia</div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-head"><h3>Our Team</h3></div>
+      <div class="grid">
+        <article class="person">
+          <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=1200&auto=format&fit=crop" alt="Sales Manager" />
+          <div class="info"><strong>Andre Morris</strong><div class="role">Sales Manager</div></div>
+        </article>
+        <article class="person">
+          <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1200&auto=format&fit=crop" alt="Finance Lead" />
+          <div class="info"><strong>Sasha Brown</strong><div class="role">Finance Lead</div></div>
+        </article>
+        <article class="person">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Service Advisor" />
+          <div class="info"><strong>Daniel Chen</strong><div class="role">Service Advisor</div></div>
+        </article>
+        <article class="person">
+          <img src="https://images.unsplash.com/photo-1541534401786-2077eed87a72?q=80&w=1200&auto=format&fit=crop" alt="Delivery Specialist" />
+          <div class="info"><strong>Maria Lopez</strong><div class="role">Delivery Specialist</div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container wrap">
+      <div>
+        <h3 style="margin:0 0 .5rem">Frequently Asked Questions</h3>
+        <p style="color:#cbd5e1">Short answers. No fluff.</p>
+        <div class="qa">
+          <details open>
+            <summary>Do you negotiate on price?</summary>
+            <div>Our cars are priced to market using real‑time comps. If a unit sits, we lower it. No hidden fees.
+            </div>
+          </details>
+          <details>
+            <summary>How fast is financing?</summary>
+            <div>Same‑day in most cases. Bring ID, proof of income, and address. Pre‑approval takes ~5 minutes online.</div>
+          </details>
+          <details>
+            <summary>Trade‑in process?</summary>
+            <div>Instant appraisal after a quick inspection. Use it as down payment or take cash.</div>
+          </details>
+          <details>
+            <summary>What inspections do you perform?</summary>
+            <div>180‑point checklist: powertrain, chassis, electronics, fluids, brakes, tires, and road test.</div>
+          </details>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin:0 0 .5rem">Subscribe & save</h3>
+        <p style="color:#cbd5e1">Get alerts on incoming units before they hit the lot.</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Connect to your email service.');">
+          <div class="bar">
+            <input type="email" placeholder="you@example.com" aria-label="Email" required />
+            <button class="btn primary" type="submit">Notify Me</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container cols">
+      <div>
+        <h5>TNC Carhub</h5>
+        <p>Honest cars. Straight answers. Test drives by appointment or walk‑in during hours.</p>
+        <p><strong>Phone:</strong> (876) 507‑6645<br/>
+           <strong>Email:</strong> sales@tnccarhub.com<br/>
+           <strong>Address:</strong> 3720 Renovation Ave, New Jersey, USA
+        </p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul style="padding:0;list-style:none;display:grid;gap:.35rem">
+          <li><a href="#inventory">All Inventory</a></li>
+          <li><a href="#inventory">New Arrivals</a></li>
+          <li><a href="#inventory">Certified Used</a></li>
+          <li><a href="#trade">Trade‑in</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul style="padding:0;list-style:none;display:grid;gap:.35rem">
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Hours</h5>
+        <p>Mon–Sat: 9:00–6:00<br/>Sun: Closed</p>
+        <a class="btn secondary" href="https://maps.google.com" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </div>
+    <div class="container subfoot">
+      <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+        <div>© <span id="yr"></span> TNC Carhub. All rights reserved.</div>
+        <div style="display:flex;gap:.75rem">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal JS: mobile nav & dynamic year
+    function toggleMobileNav(){
+      const el = document.getElementById('mnav');
+      el.hidden = !el.hidden;
+    }
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
