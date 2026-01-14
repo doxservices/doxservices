@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Transformation Services - Presentation</title>
+  <style>
+    :root{
+      --primary-blue: #0A2E5C;
+      --secondary-blue: #1E4D8B;
+      --accent-blue: #2563EB;
+      --light-blue: #3B82F6;
+      --bg-gray: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-light: #F1F5F9;
+      --success: #059669;
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--primary-blue);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-y: auto;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      background: rgba(255,255,255,0.95);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .top-nav-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .btn-back {
+      background: var(--primary-blue);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-blue);
+    }
+
+    .presentation {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 0 120px;
+    }
+
+    .slide-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1400px;
+      background: white;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide-header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: white;
+      padding: 40px 60px;
+      border-bottom: 4px solid var(--accent-blue);
+    }
+
+    .slide-number {
+      font-size: 13px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .slide-title {
+      font-size: 38px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .slide-content {
+      padding: 50px 60px;
+    }
+
+    .slide-controls {
+      width: 100%;
+      max-width: 1400px;
+      margin: 40px auto 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0,0,0,0.85);
+      padding: 16px 24px;
+    }
+
+    .slide-btn {
+      background: white;
+      color: var(--primary-blue);
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .slide-btn:hover {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .slide-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .plan-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .plan-detail {
+      background: var(--bg-gray);
+      border: 2px solid var(--border-color);
+      padding: 32px;
+    }
+
+    .plan-detail h3 {
+      color: var(--primary-blue);
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .plan-price-large {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 12px 0;
+    }
+
+    .plan-price-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .plan-features {
+      list-style: none;
+    }
+
+    .plan-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-label {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .feature-value {
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .single-plan-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .plan-hero {
+      background: var(--bg-gray);
+      border: 2px solid var(--border-color);
+      padding: 36px;
+      margin-bottom: 32px;
+    }
+
+    .plan-hero h3 {
+      color: var(--primary-blue);
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .plan-hero .plan-price-large {
+      font-size: 32px;
+      margin: 12px 0;
+    }
+
+    .plan-hero .plan-price-sub {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .plan-hero p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .info-section {
+      background: white;
+      border: 2px solid var(--border-color);
+      padding: 24px;
+    }
+
+    .info-section h4 {
+      color: var(--primary-blue);
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .info-section ul {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+
+    .info-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .plan-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .slide-content {
+        padding: 30px;
+      }
+
+      .slide-header {
+        padding: 30px;
+      }
+
+      .slide-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="top-nav-content">
+      <a href="index.html" class="nav-brand">DOX Services</a>
+      <a href="index.html" class="btn-back">
+        <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24">
+          <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <div class="presentation">
+    <div class="slide-container">
+      <!-- Slide 1: Foundation & Growth Packages -->
+      <div class="slide active" data-slide="1">
+        <div class="slide-header">
+          <div class="slide-number">Slide 1 of 4</div>
+          <h2 class="slide-title">Foundation & Growth Packages</h2>
+        </div>
+        <div class="slide-content">
+          <h3 style="color: var(--primary-blue); font-size: 28px; margin-bottom: 16px;">Entry-Level Digital Transformation</h3>
+          <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.7;">
+            Establish digital excellence with structured, professional transformation services designed for organizations 
+            beginning their journey or scaling initial initiatives.
+          </p>
+
+          <div class="plan-showcase">
+            <div class="plan-detail">
+              <h3>Foundation Package</h3>
+              <div class="plan-price-large">JMD 100,000</div>
+              <div class="plan-price-sub">USD $625 per month</div>
+              <ul class="plan-features">
+                <li>
+                  <span class="feature-label">Weekly Deliverables</span>
+                  <span class="feature-value">1 per week</span>
+                </li>
+                <li>
+                  <span class="feature-label">Monthly Output</span>
+                  <span class="feature-value">4 total</span>
+                </li>
+                <li>
+                  <span class="feature-label">Digital Assets</span>
+                  <span class="feature-value">2 per month</span>
+                </li>
+                <li>
+                  <span class="feature-label">Strategy Level</span>
+                  <span class="feature-value">Basic Planning</span>
+                </li>
+                <li>
+                  <span class="feature-label">On-Site Consultation</span>
+                  <span class="feature-value">Not Included</span>
+                </li>
+              </ul>
+              <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--border-color);">
+                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                  <strong>Best For:</strong> Organizations establishing consistent digital presence and professional management
+                </p>
+              </div>
+            </div>
+
+            <div class="plan-detail">
+              <h3>Growth Package</h3>
+              <div class="plan-price-large">JMD 120,000</div>
+              <div class="plan-price-sub">USD $750 per month</div>
+              <ul class="plan-features">
+                <li>
+                  <span class="feature-label">Weekly Deliverables</span>
+                  <span class="feature-value">2 per week</span>
+                </li>
+                <li>
+                  <span class="feature-label">Monthly Output</span>
+                  <span class="feature-value">8 total</span>
+                </li>
+                <li>
+                  <span class="feature-label">Digital Assets</span>
+                  <span class="feature-value">4 per month</span>
+                </li>
+                <li>
+                  <span class="feature-label">Strategy Level</span>
+                  <span class="feature-value">Full Roadmap</span>
+                </li>
+                <li>
+                  <span class="feature-label">Innovation Integration</span>
+                  <span class="feature-value">Included</span>
+                </li>
+              </ul>
+              <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--border-color);">
+                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                  <strong>Best For:</strong> Organizations accelerating digital initiatives and driving measurable business impact
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Acceleration Package -->
+      <div class="slide" data-slide="2">
+        <div class="slide-header">
+          <div class="slide-number">Slide 2 of 4</div>
+          <h2 class="slide-title">Acceleration Package</h2>
+        </div>
+        <div class="slide-content">
+          <div class="single-plan-layout">
+            <div class="plan-hero">
+              <h3>Acceleration Package</h3>
+              <div class="plan-price-large">JMD 140,000</div>
+              <div class="plan-price-sub">USD $875 per month</div>
+              <p style="font-size: 15px; color: var(--text-secondary); margin-top: 14px; line-height: 1.6;">
+                Designed for organizations pursuing market leadership through consistent digital excellence and 
+                strategic program development initiatives.
+              </p>
+            </div>
+
+            <div class="plan-grid">
+              <div class="info-section">
+                <h4>Package Details</h4>
+                <ul class="plan-features" style="border: none;">
+                  <li>
+                    <span class="feature-label">Weekly Deliverables</span>
+                    <span class="feature-value">3 per week</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Monthly Output</span>
+                    <span class="feature-value">12 total</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Digital Assets</span>
+                    <span class="feature-value">6 per month</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Strategy Level</span>
+                    <span class="feature-value">Program Development</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">On-Site Consultation</span>
+                    <span class="feature-value">Optional Add-On</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="info-section">
+                <h4>Key Features</h4>
+                <ul>
+                  <li>Regular delivery cadence ensures continuous momentum</li>
+                  <li>Recurring program series build organizational buy-in</li>
+                  <li>Advanced strategic planning and trend integration</li>
+                  <li>Enhanced digital asset production for maximum reach</li>
+                  <li>Performance optimization and impact measurement</li>
+                </ul>
+              </div>
+
+              <div class="info-section">
+                <h4>Ideal For</h4>
+                <p>
+                  Organizations ready to establish market leadership positioning through comprehensive digital 
+                  transformation. Perfect for businesses maintaining top-of-mind awareness with key stakeholders 
+                  and driving sustained competitive advantage.
+                </p>
+              </div>
+
+              <div class="info-section">
+                <h4>What Sets It Apart</h4>
+                <p>
+                  The Acceleration Package bridges mid-tier and enterprise services, offering substantial output 
+                  without full enterprise commitment. Includes strategic program development and the option to add 
+                  monthly on-site consultation as your needs evolve.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Enterprise Package -->
+      <div class="slide" data-slide="3">
+        <div class="slide-header">
+          <div class="slide-number">Slide 3 of 4</div>
+          <h2 class="slide-title">Enterprise Transformation Package</h2>
+        </div>
+        <div class="slide-content">
+          <div class="single-plan-layout">
+            <div class="plan-hero">
+              <h3>Enterprise Package</h3>
+              <div class="plan-price-large">JMD 160,000</div>
+              <div class="plan-price-sub">USD $1,000 per month</div>
+              <p style="font-size: 15px; color: var(--text-secondary); margin-top: 14px; line-height: 1.6;">
+                Our most comprehensive offering delivers maximum digital output, monthly strategic sessions, 
+                and complete transformation program management for industry-leading organizations.
+              </p>
+            </div>
+
+            <div class="plan-grid">
+              <div class="info-section">
+                <h4>Package Details</h4>
+                <ul class="plan-features" style="border: none;">
+                  <li>
+                    <span class="feature-label">Weekly Deliverables</span>
+                    <span class="feature-value">4 per week</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Monthly Output</span>
+                    <span class="feature-value">16 total</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Digital Assets</span>
+                    <span class="feature-value">8+ per month</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Strategy Level</span>
+                    <span class="feature-value">Full Campaigns</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">On-Site Consultation</span>
+                    <span class="feature-value">1 per month</span>
+                  </li>
+                  <li>
+                    <span class="feature-label">Strategic Planning</span>
+                    <span class="feature-value">Comprehensive</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="info-section">
+                <h4>Premium Benefits</h4>
+                <ul>
+                  <li>Monthly on-site strategic consultation and planning sessions</li>
+                  <li>Leadership alignment and transformation roadmapping</li>
+                  <li>Maximum consistency with continuous stakeholder engagement</li>
+                  <li>Strategic campaign management for quarterly initiatives</li>
+                  <li>Comprehensive impact optimization and measurement</li>
+                </ul>
+              </div>
+
+              <div class="info-section">
+                <h4>Ideal For</h4>
+                <p>
+                  Organizations committed to market leadership, aggressive growth objectives, and establishing 
+                  themselves as definitive industry leaders. Best suited for businesses requiring comprehensive 
+                  digital transformation excellence and executive-level strategic partnership.
+                </p>
+              </div>
+
+              <div class="info-section">
+                <h4>Enterprise Advantage</h4>
+                <p>
+                  This package includes everything from lower tiers plus monthly on-site consultation, campaign 
+                  management, and comprehensive strategic planning. Designed for organizations that view digital 
+                  transformation as a critical competitive differentiator.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Comparison Overview -->
+      <div class="slide" data-slide="4">
+        <div class="slide-header">
+          <div class="slide-number">Slide 4 of 4</div>
+          <h2 class="slide-title">Complete Package Comparison</h2>
+        </div>
+        <div class="slide-content">
+          <h3 style="color: var(--primary-blue); font-size: 28px; margin-bottom: 32px; text-align: center;">Choose Your Digital Transformation Path</h3>
+          
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 32px;">
+            <div class="plan-detail" style="padding: 28px;">
+              <h3 style="font-size: 20px;">Foundation</h3>
+              <div class="plan-price-large" style="font-size: 28px;">JMD 100K</div>
+              <div class="plan-price-sub" style="font-size: 14px;">USD $625/month</div>
+              <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                <li style="margin-bottom: 8px;">✓ 4 monthly outputs</li>
+                <li style="margin-bottom: 8px;">✓ Basic strategy</li>
+                <li style="margin-bottom: 8px;">✓ 2 digital assets</li>
+                <li style="color: var(--text-muted);">✗ No on-site visits</li>
+              </ul>
+            </div>
+
+            <div class="plan-detail" style="padding: 28px;">
+              <h3 style="font-size: 20px;">Growth</h3>
+              <div class="plan-price-large" style="font-size: 28px;">JMD 120K</div>
+              <div class="plan-price-sub" style="font-size: 14px;">USD $750/month</div>
+              <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                <li style="margin-bottom: 8px;">✓ 8 monthly outputs</li>
+                <li style="margin-bottom: 8px;">✓ Full roadmap</li>
+                <li style="margin-bottom: 8px;">✓ 4 digital assets</li>
+                <li style="color: var(--text-muted);">✗ No on-site visits</li>
+              </ul>
+            </div>
+
+            <div class="plan-detail" style="padding: 28px;">
+              <h3 style="font-size: 20px;">Acceleration</h3>
+              <div class="plan-price-large" style="font-size: 28px;">JMD 140K</div>
+              <div class="plan-price-sub" style="font-size: 14px;">USD $875/month</div>
+              <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                <li style="margin-bottom: 8px;">✓ 12 monthly outputs</li>
+                <li style="margin-bottom: 8px;">✓ Program development</li>
+                <li style="margin-bottom: 8px;">✓ 6 digital assets</li>
+                <li style="margin-bottom: 8px;">✓ Optional on-site</li>
+              </ul>
+            </div>
+
+            <div class="plan-detail" style="padding: 28px; border: 3px solid var(--accent-blue);">
+              <h3 style="font-size: 20px;">Enterprise</h3>
+              <div class="plan-price-large" style="font-size: 28px;">JMD 160K</div>
+              <div class="plan-price-sub" style="font-size: 14px;">USD $1,000/month</div>
+              <ul style="list-style: none; padding: 0; margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                <li style="margin-bottom: 8px;">✓ 16 monthly outputs</li>
+                <li style="margin-bottom: 8px;">✓ Full campaigns</li>
+                <li style="margin-bottom: 8px;">✓ 8+ digital assets</li>
+                <li style="margin-bottom: 8px;">✓ Monthly on-site included</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-gray); border: 2px solid var(--border-color); padding: 32px; text-align: center;">
+            <h4 style="color: var(--primary-blue); font-size: 22px; margin-bottom: 16px;">All Packages Include</h4>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px;">
+              <div>
+                <p style="font-weight: 600; color: var(--primary-blue); margin-bottom: 8px; font-size: 15px;">Professional Excellence</p>
+                <p style="font-size: 13px; color: var(--text-secondary);">Brand-consistent digital asset development</p>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--primary-blue); margin-bottom: 8px; font-size: 15px;">Strategic Planning</p>
+                <p style="font-size: 13px; color: var(--text-secondary);">Comprehensive roadmaps and calendars</p>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--primary-blue); margin-bottom: 8px; font-size: 15px;">Approval Workflow</p>
+                <p style="font-size: 13px; color: var(--text-secondary);">Structured review and quality assurance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-controls">
+      <button class="slide-btn" onclick="previousSlide()" id="prevBtn">← Previous</button>
+      <span style="color: white; font-weight: 600; padding: 0 20px; display: flex; align-items: center;" id="slideCounter">1 / 4</span>
+      <button class="slide-btn" onclick="nextSlide()" id="nextBtn">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 4;
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlides();
+      }
+    }
+
+    function previousSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlides();
+      }
+    }
+
+    function updateSlides() {
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('active');
+      });
+      document.querySelector(`.slide[data-slide="${currentSlide}"]`).classList.add('active');
+      
+      document.getElementById('prevBtn').disabled = currentSlide === 1;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+      document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+      
+      // Scroll to top when changing slides
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') previousSlide();
+    });
+
+    // Initialize
+    updateSlides();
+  </script>
+</body>
+</html>
