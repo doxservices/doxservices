@@ -1,831 +1,977 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Digital Transformation Services – Professional Plans</title>
-  <style>
-    :root{
-      --primary-blue: #0A2E5C;
-      --secondary-blue: #1E4D8B;
-      --accent-blue: #2563EB;
-      --light-blue: #3B82F6;
-      --bg-gray: #F8FAFC;
-      --bg-white: #FFFFFF;
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-      --border-color: #E2E8F0;
-      --border-light: #F1F5F9;
-      --success: #059669;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
-      --shadow-xl: 0 20px 40px rgba(0,0,0,0.1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoxServices | Intelligent DNA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            --primary: #0a2240;
+            --secondary: #1e4788;
+            --accent: #00b4d8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover {
+            background-color: #0099bb;
+            transform: translateY(-2px);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,181.3C960,181,1056,235,1152,229.3C1248,224,1344,160,1392,128L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 650px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 180, 216, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Industries Section */
+        .industries {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .industry-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .industry-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(10, 34, 64, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .industry-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Confidentiality Section */
+        .confidentiality {
+            padding: 80px 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .confidentiality-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .confidentiality-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .confidentiality-content p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .confidentiality-note {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .about-visual {
+            flex: 1;
+            position: relative;
+        }
+        
+        .data-visualization {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: var(--primary);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s;
+                gap: 30px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
     
-    * { 
-      box-sizing: border-box; 
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg-gray);
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+/* --- Injected: DNA imagery backgrounds --- */
+.dna-hero {
+  /* keep existing gradient; add DNA layer */
+  background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%), url('data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b4d8%22%20stop-opacity%3D%220.25%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300e0ff%22%20stop-opacity%3D%220.15%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3Cfilter%20id%3D%22blur%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%222%22/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22none%22/%3E%0A%20%20%3C%21--%20twin%20helices%20--%3E%0A%20%20%3Cpath%20d%3D%22M100%2050%20C%20180%20140%2C%20220%20220%2C%20300%20300%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20460%2C%20500%20540%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20700%2C%20700%20780%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%20940%2C%20900%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20700%2C%201100%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20460%2C%201300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20220%2C%201500%20140%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%228%22/%3E%0A%20%20%3Cpath%20d%3D%22M100%20140%20C%20180%20220%2C%20220%20300%2C%20300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20540%2C%20500%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20780%2C%20700%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%201020%2C%20900%20940%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20780%2C%201100%20700%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20540%2C%201300%20460%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20300%2C%201500%20220%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%226%22%20opacity%3D%220.8%22/%3E%0A%20%20%3C%21--%20cross%E2%80%91bars%20--%3E%0A%20%20%3Cg%20stroke%3D%22%238adfff%22%20stroke-opacity%3D%220.18%22%20filter%3D%22url%28%23blur%29%22%3E%0A%20%20%20%20%3Cline%20x1%3D%22180%22%20y1%3D%22240%22%20x2%3D%22240%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22270%22%20y1%3D%22300%22%20x2%3D%22330%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22360%22%20y1%3D%22360%22%20x2%3D%22420%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22450%22%20y1%3D%22120%22%20x2%3D%22510%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22540%22%20y1%3D%22180%22%20x2%3D%22600%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22630%22%20y1%3D%22240%22%20x2%3D%22690%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22720%22%20y1%3D%22300%22%20x2%3D%22780%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22810%22%20y1%3D%22360%22%20x2%3D%22870%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22900%22%20y1%3D%22120%22%20x2%3D%22960%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22990%22%20y1%3D%22180%22%20x2%3D%221050%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221080%22%20y1%3D%22240%22%20x2%3D%221140%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221170%22%20y1%3D%22300%22%20x2%3D%221230%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221260%22%20y1%3D%22360%22%20x2%3D%221320%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221350%22%20y1%3D%22120%22%20x2%3D%221410%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221440%22%20y1%3D%22180%22%20x2%3D%221500%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221530%22%20y1%3D%22240%22%20x2%3D%221590%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%20%20%3C/g%3E%0A%20%20%3C%21--%20particles%20--%3E%0A%20%20%3Cg%20fill%3D%22%2366d3ff%22%20opacity%3D%220.25%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22133%22%20cy%3D%2289%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22266%22%20cy%3D%22178%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22399%22%20cy%3D%22267%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22532%22%20cy%3D%22356%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22665%22%20cy%3D%22445%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22798%22%20cy%3D%22534%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22931%22%20cy%3D%22623%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221064%22%20cy%3D%22712%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221197%22%20cy%3D%22801%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221330%22%20cy%3D%22890%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221463%22%20cy%3D%2279%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221596%22%20cy%3D%22168%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22129%22%20cy%3D%22257%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22262%22%20cy%3D%22346%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22395%22%20cy%3D%22435%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22528%22%20cy%3D%22524%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22661%22%20cy%3D%22613%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22794%22%20cy%3D%22702%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22927%22%20cy%3D%22791%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221060%22%20cy%3D%22880%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221193%22%20cy%3D%2269%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221326%22%20cy%3D%22158%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221459%22%20cy%3D%22247%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221592%22%20cy%3D%22336%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22125%22%20cy%3D%22425%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22258%22%20cy%3D%22514%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22391%22%20cy%3D%22603%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22524%22%20cy%3D%22692%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22657%22%20cy%3D%22781%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22790%22%20cy%3D%22870%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22923%22%20cy%3D%2259%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221056%22%20cy%3D%22148%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221189%22%20cy%3D%22237%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221322%22%20cy%3D%22326%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221455%22%20cy%3D%22415%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221588%22%20cy%3D%22504%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22121%22%20cy%3D%22593%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22254%22%20cy%3D%22682%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22387%22%20cy%3D%22771%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22520%22%20cy%3D%22860%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22653%22%20cy%3D%2249%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22786%22%20cy%3D%22138%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22919%22%20cy%3D%22227%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221052%22%20cy%3D%22316%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221185%22%20cy%3D%22405%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221318%22%20cy%3D%22494%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221451%22%20cy%3D%22583%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221584%22%20cy%3D%22672%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22117%22%20cy%3D%22761%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22250%22%20cy%3D%22850%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22383%22%20cy%3D%2239%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22516%22%20cy%3D%22128%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22649%22%20cy%3D%22217%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22782%22%20cy%3D%22306%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22915%22%20cy%3D%22395%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221048%22%20cy%3D%22484%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221181%22%20cy%3D%22573%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221314%22%20cy%3D%22662%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221447%22%20cy%3D%22751%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221580%22%20cy%3D%22840%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22113%22%20cy%3D%2229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22246%22%20cy%3D%22118%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22379%22%20cy%3D%22207%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22512%22%20cy%3D%22296%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22645%22%20cy%3D%22385%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22778%22%20cy%3D%22474%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22911%22%20cy%3D%22563%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221044%22%20cy%3D%22652%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221177%22%20cy%3D%22741%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221310%22%20cy%3D%22830%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221443%22%20cy%3D%2219%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221576%22%20cy%3D%22108%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22109%22%20cy%3D%22197%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22242%22%20cy%3D%22286%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22375%22%20cy%3D%22375%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22508%22%20cy%3D%22464%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22641%22%20cy%3D%22553%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22774%22%20cy%3D%22642%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22907%22%20cy%3D%22731%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221040%22%20cy%3D%22820%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221173%22%20cy%3D%229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221306%22%20cy%3D%2298%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221439%22%20cy%3D%22187%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221572%22%20cy%3D%22276%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22105%22%20cy%3D%22365%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22238%22%20cy%3D%22454%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22371%22%20cy%3D%22543%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22504%22%20cy%3D%22632%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22637%22%20cy%3D%22721%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22770%22%20cy%3D%22810%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22903%22%20cy%3D%22899%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221036%22%20cy%3D%2288%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221169%22%20cy%3D%22177%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221302%22%20cy%3D%22266%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221435%22%20cy%3D%22355%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221568%22%20cy%3D%22444%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22101%22%20cy%3D%22533%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22234%22%20cy%3D%22622%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22367%22%20cy%3D%22711%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22500%22%20cy%3D%22800%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22633%22%20cy%3D%22889%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22766%22%20cy%3D%2278%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22899%22%20cy%3D%22167%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221032%22%20cy%3D%22256%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221165%22%20cy%3D%22345%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221298%22%20cy%3D%22434%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221431%22%20cy%3D%22523%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221564%22%20cy%3D%22612%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2297%22%20cy%3D%22701%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22230%22%20cy%3D%22790%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22363%22%20cy%3D%22879%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22496%22%20cy%3D%2268%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22629%22%20cy%3D%22157%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22762%22%20cy%3D%22246%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22895%22%20cy%3D%22335%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221028%22%20cy%3D%22424%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221161%22%20cy%3D%22513%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221294%22%20cy%3D%22602%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221427%22%20cy%3D%22691%22%20r%3D%225%22/%3E%3C/g%3E%0A%3C/svg%3E');
+  background-size: cover;
+  background-position: center;
+}
+.dna-panel {
+  background-image: linear-gradient(rgba(10,34,64,0.65), rgba(30,71,136,0.65)), url('data:image/svg+xml;utf8,%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201600%20900%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b4d8%22%20stop-opacity%3D%220.25%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300e0ff%22%20stop-opacity%3D%220.15%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3Cfilter%20id%3D%22blur%22%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%222%22/%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22none%22/%3E%0A%20%20%3C%21--%20twin%20helices%20--%3E%0A%20%20%3Cpath%20d%3D%22M100%2050%20C%20180%20140%2C%20220%20220%2C%20300%20300%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20460%2C%20500%20540%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20700%2C%20700%20780%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%20940%2C%20900%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20700%2C%201100%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20460%2C%201300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20220%2C%201500%20140%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%228%22/%3E%0A%20%20%3Cpath%20d%3D%22M100%20140%20C%20180%20220%2C%20220%20300%2C%20300%20380%0A%20%20%20%20%20%20%20%20%20%20%20S%20420%20540%2C%20500%20620%0A%20%20%20%20%20%20%20%20%20%20%20S%20620%20780%2C%20700%20860%0A%20%20%20%20%20%20%20%20%20%20%20S%20820%201020%2C%20900%20940%0A%20%20%20%20%20%20%20%20%20%20%20S%201020%20780%2C%201100%20700%0A%20%20%20%20%20%20%20%20%20%20%20S%201220%20540%2C%201300%20460%0A%20%20%20%20%20%20%20%20%20%20%20S%201420%20300%2C%201500%20220%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%226%22%20opacity%3D%220.8%22/%3E%0A%20%20%3C%21--%20cross%E2%80%91bars%20--%3E%0A%20%20%3Cg%20stroke%3D%22%238adfff%22%20stroke-opacity%3D%220.18%22%20filter%3D%22url%28%23blur%29%22%3E%0A%20%20%20%20%3Cline%20x1%3D%22180%22%20y1%3D%22240%22%20x2%3D%22240%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22270%22%20y1%3D%22300%22%20x2%3D%22330%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22360%22%20y1%3D%22360%22%20x2%3D%22420%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22450%22%20y1%3D%22120%22%20x2%3D%22510%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22540%22%20y1%3D%22180%22%20x2%3D%22600%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22630%22%20y1%3D%22240%22%20x2%3D%22690%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22720%22%20y1%3D%22300%22%20x2%3D%22780%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22810%22%20y1%3D%22360%22%20x2%3D%22870%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22900%22%20y1%3D%22120%22%20x2%3D%22960%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%22990%22%20y1%3D%22180%22%20x2%3D%221050%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221080%22%20y1%3D%22240%22%20x2%3D%221140%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221170%22%20y1%3D%22300%22%20x2%3D%221230%22%20y2%3D%22360%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221260%22%20y1%3D%22360%22%20x2%3D%221320%22%20y2%3D%22420%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221350%22%20y1%3D%22120%22%20x2%3D%221410%22%20y2%3D%22180%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221440%22%20y1%3D%22180%22%20x2%3D%221500%22%20y2%3D%22240%22%20stroke-width%3D%223%22/%3E%0A%3Cline%20x1%3D%221530%22%20y1%3D%22240%22%20x2%3D%221590%22%20y2%3D%22300%22%20stroke-width%3D%223%22/%3E%0A%20%20%3C/g%3E%0A%20%20%3C%21--%20particles%20--%3E%0A%20%20%3Cg%20fill%3D%22%2366d3ff%22%20opacity%3D%220.25%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22133%22%20cy%3D%2289%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22266%22%20cy%3D%22178%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22399%22%20cy%3D%22267%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22532%22%20cy%3D%22356%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22665%22%20cy%3D%22445%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22798%22%20cy%3D%22534%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22931%22%20cy%3D%22623%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221064%22%20cy%3D%22712%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221197%22%20cy%3D%22801%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221330%22%20cy%3D%22890%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221463%22%20cy%3D%2279%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221596%22%20cy%3D%22168%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22129%22%20cy%3D%22257%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22262%22%20cy%3D%22346%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22395%22%20cy%3D%22435%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22528%22%20cy%3D%22524%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22661%22%20cy%3D%22613%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22794%22%20cy%3D%22702%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22927%22%20cy%3D%22791%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221060%22%20cy%3D%22880%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221193%22%20cy%3D%2269%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221326%22%20cy%3D%22158%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221459%22%20cy%3D%22247%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221592%22%20cy%3D%22336%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22125%22%20cy%3D%22425%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22258%22%20cy%3D%22514%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22391%22%20cy%3D%22603%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22524%22%20cy%3D%22692%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22657%22%20cy%3D%22781%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22790%22%20cy%3D%22870%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22923%22%20cy%3D%2259%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221056%22%20cy%3D%22148%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221189%22%20cy%3D%22237%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221322%22%20cy%3D%22326%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221455%22%20cy%3D%22415%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221588%22%20cy%3D%22504%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22121%22%20cy%3D%22593%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22254%22%20cy%3D%22682%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22387%22%20cy%3D%22771%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22520%22%20cy%3D%22860%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22653%22%20cy%3D%2249%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22786%22%20cy%3D%22138%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22919%22%20cy%3D%22227%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221052%22%20cy%3D%22316%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221185%22%20cy%3D%22405%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221318%22%20cy%3D%22494%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221451%22%20cy%3D%22583%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221584%22%20cy%3D%22672%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22117%22%20cy%3D%22761%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22250%22%20cy%3D%22850%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22383%22%20cy%3D%2239%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22516%22%20cy%3D%22128%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22649%22%20cy%3D%22217%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22782%22%20cy%3D%22306%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22915%22%20cy%3D%22395%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221048%22%20cy%3D%22484%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221181%22%20cy%3D%22573%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221314%22%20cy%3D%22662%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221447%22%20cy%3D%22751%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221580%22%20cy%3D%22840%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22113%22%20cy%3D%2229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22246%22%20cy%3D%22118%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22379%22%20cy%3D%22207%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22512%22%20cy%3D%22296%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22645%22%20cy%3D%22385%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22778%22%20cy%3D%22474%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22911%22%20cy%3D%22563%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221044%22%20cy%3D%22652%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221177%22%20cy%3D%22741%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221310%22%20cy%3D%22830%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221443%22%20cy%3D%2219%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221576%22%20cy%3D%22108%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22109%22%20cy%3D%22197%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22242%22%20cy%3D%22286%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22375%22%20cy%3D%22375%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22508%22%20cy%3D%22464%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22641%22%20cy%3D%22553%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22774%22%20cy%3D%22642%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22907%22%20cy%3D%22731%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221040%22%20cy%3D%22820%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221173%22%20cy%3D%229%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221306%22%20cy%3D%2298%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221439%22%20cy%3D%22187%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221572%22%20cy%3D%22276%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22105%22%20cy%3D%22365%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22238%22%20cy%3D%22454%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22371%22%20cy%3D%22543%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22504%22%20cy%3D%22632%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22637%22%20cy%3D%22721%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22770%22%20cy%3D%22810%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22903%22%20cy%3D%22899%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221036%22%20cy%3D%2288%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221169%22%20cy%3D%22177%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221302%22%20cy%3D%22266%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221435%22%20cy%3D%22355%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221568%22%20cy%3D%22444%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22101%22%20cy%3D%22533%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22234%22%20cy%3D%22622%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22367%22%20cy%3D%22711%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22500%22%20cy%3D%22800%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22633%22%20cy%3D%22889%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22766%22%20cy%3D%2278%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22899%22%20cy%3D%22167%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221032%22%20cy%3D%22256%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221165%22%20cy%3D%22345%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221298%22%20cy%3D%22434%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221431%22%20cy%3D%22523%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221564%22%20cy%3D%22612%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%2297%22%20cy%3D%22701%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22230%22%20cy%3D%22790%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22363%22%20cy%3D%22879%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%22496%22%20cy%3D%2268%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%22629%22%20cy%3D%22157%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%22762%22%20cy%3D%22246%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%22895%22%20cy%3D%22335%22%20r%3D%225%22/%3E%0A%3Ccircle%20cx%3D%221028%22%20cy%3D%22424%22%20r%3D%222%22/%3E%0A%3Ccircle%20cx%3D%221161%22%20cy%3D%22513%22%20r%3D%223%22/%3E%0A%3Ccircle%20cx%3D%221294%22%20cy%3D%22602%22%20r%3D%224%22/%3E%0A%3Ccircle%20cx%3D%221427%22%20cy%3D%22691%22%20r%3D%225%22/%3E%3C/g%3E%0A%3C/svg%3E');
+  background-size: cover;
+  background-position: center;
+}
 
-    /* Navigation */
-    .nav {
-      background: white;
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-sm);
-    }
 
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
 
-    .nav-brand {
-      font-weight: 700;
-      color: var(--primary-blue);
-      font-size: 18px;
-      text-decoration: none;
-    }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
+@media (max-width: 768px){
+    
+}
 
-    .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
 
-    .nav-link:hover {
-      color: var(--primary-blue);
-    }
 
-    .nav-link.active {
-      color: var(--primary-blue);
-      font-weight: 600;
-    }
 
-    .btn-primary {
-      background: var(--accent-blue);
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
+.hero.dna-hero {
+  background-image:
+    linear-gradient(160deg, rgba(11, 37, 69, 0.60) 0%, rgba(17, 68, 119, 0.60) 100%),
+    url('./hero_dna.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+}
 
-    .btn-primary:hover {
-      background: var(--primary-blue);
-    }
-    
-    /* Header Section */
-    .hero {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-      color: white;
-      padding: 80px 0 100px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
-      pointer-events: none;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: white;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      max-width: 900px;
-    }
-    
-    .hero-description {
-      font-size: 20px;
-      line-height: 1.6;
-      opacity: 0.95;
-      max-width: 800px;
-      margin-bottom: 32px;
-    }
-    
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      margin-top: 40px;
-    }
-    
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .meta-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
-    .meta-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: white;
-    }
-    
-    .meta-text {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .meta-label {
-      font-size: 12px;
-      opacity: 0.8;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .meta-value {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    
-    /* Content Section */
-    .content-section {
-      padding: 80px 0;
-    }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      margin-bottom: 16px;
-    }
-    
-    .section-subtitle {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* Pricing Table */
-    .pricing-table-wrapper {
-      background: white;
-      box-shadow: var(--shadow-xl);
-      overflow-x: auto;
-      margin-bottom: 40px;
-      border: 1px solid var(--border-color);
-    }
-    
-    .pricing-table {
-      width: 100%;
-      min-width: 1100px;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-    
-    .pricing-table thead {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-      color: white;
-    }
-    
-    .pricing-table th {
-      padding: 18px 16px;
-      text-align: left;
-      font-weight: 600;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid rgba(255,255,255,0.1);
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-    
-    .pricing-table tbody tr {
-      border-bottom: 1px solid var(--border-light);
-      transition: background 0.2s;
-    }
-    
-    .pricing-table tbody tr:hover {
-      background: var(--bg-gray);
-    }
-    
-    .pricing-table tbody tr:last-child {
-      border-bottom: none;
-    }
-    
-    .pricing-table td {
-      padding: 20px 16px;
-      vertical-align: middle;
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-    
-    .plan-name {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--primary-blue);
-      white-space: nowrap;
-    }
-    
-    .price {
-      font-weight: 700;
-      color: var(--primary-blue);
-    }
-    
-    .price-main {
-      font-size: 20px;
-      display: block;
-      margin-bottom: 4px;
-      white-space: nowrap;
-    }
-    
-    .price-usd {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-      display: block;
-    }
-    
-    .badge {
-      display: inline-block;
-      padding: 6px 12px;
-      font-size: 11px;
-      font-weight: 600;
-      background: var(--bg-gray);
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-      white-space: nowrap;
-    }
-    
-    .badge-primary {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--accent-blue);
-      border-color: rgba(37, 99, 235, 0.2);
-    }
-    
-    .badge-success {
-      background: rgba(5, 150, 105, 0.1);
-      color: var(--success);
-      border-color: rgba(5, 150, 105, 0.2);
-    }
-    
-    .value-highlight {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--primary-blue);
-      display: block;
-      line-height: 1.3;
-    }
-    
-    .value-detail {
-      display: block;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      font-weight: 400;
-      line-height: 1.3;
-    }
-    
-    /* Feature Grid */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-top: 48px;
-    }
-    
-    .feature-card {
-      background: white;
-      padding: 32px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border-color);
-    }
-    
-    .feature-icon {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      margin-bottom: 20px;
-    }
 
-    .feature-icon svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-    }
-    
-    .feature-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      margin-bottom: 12px;
-    }
-    
-    .feature-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    
-    .feature-list {
-      list-style: none;
-      margin-top: 16px;
-    }
-    
-    .feature-list li {
-      padding-left: 24px;
-      position: relative;
-      margin-bottom: 8px;
-      color: var(--text-secondary);
-    }
-    
-    .feature-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--success);
-      font-weight: 700;
-    }
-    
-    /* Comparison Table */
-    .comparison-table {
-      background: white;
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-      margin-top: 40px;
-      border: 1px solid var(--border-color);
-    }
-    
-    .comparison-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    
-    .comparison-table thead {
-      background: var(--bg-gray);
-      border-bottom: 2px solid var(--border-color);
-    }
-    
-    .comparison-table th {
-      padding: 16px;
-      text-align: center;
-      font-weight: 600;
-      color: var(--primary-blue);
-      font-size: 14px;
-    }
-    
-    .comparison-table th:first-child {
-      text-align: left;
-      width: 40%;
-    }
-    
-    .comparison-table td {
-      padding: 20px 16px;
-      text-align: center;
-      border-bottom: 1px solid var(--border-light);
-    }
-    
-    .comparison-table td:first-child {
-      text-align: left;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    
-    .check-icon {
-      color: var(--success);
-      font-size: 20px;
-      font-weight: 700;
-    }
-    
-    .cross-icon {
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-    
-    /* Info Box */
-    .info-box {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.05));
-      border-left: 4px solid var(--accent-blue);
-      padding: 24px;
-      margin: 40px 0;
-    }
-    
-    .info-box-title {
-      font-weight: 700;
-      color: var(--primary-blue);
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-    
-    .info-box-content {
-      color: var(--text-secondary);
-    }
-    
-    /* Footer */
-    .footer {
-      background: var(--primary-blue);
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-      margin-top: 80px;
-    }
-    
-    .footer-content {
-      opacity: 0.9;
-      font-size: 14px;
-    }
-    
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-      
-      .hero-description {
-        font-size: 16px;
-      }
-      
-      .section-title {
-        font-size: 28px;
-      }
+@media (max-width: 768px){
+  
+  
+}
 
-      .nav-links {
-        gap: 16px;
-        font-size: 12px;
-      }
-    }
-  </style>
+
+.logo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo .tagline{
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+@media (max-width: 768px){
+  .logo .tagline{
+    font-size: 0.72rem;
+  }
+}
+
+
+
+
+@media (min-width: 1024px){
+  
+}
+
+
+
+
+
+
+.data-visualization.dna-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 360px;   /* gives the chart room; adjust if you want taller */
+  padding: 8px 0;
+  overflow: hidden;    /* keep it tidy if something overshoots */
+}
+.data-visualization.dna-panel img.chart-figure{
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;   /* prevent horizontal stretch */
+  height: auto !important;  /* prevent vertical stretch */
+  display: block;
+}
+@media (max-width: 768px){
+  .data-visualization.dna-panel{
+    min-height: 280px;
+    padding: 6px 0;
+  }
+}
+
+
+/* Brand lockup: "DoxServices" — Dox (white) + Services (accent) */
+.logo .brandline{
+  color: #ffffff;              /* Dox */
+  font-weight: 700;
+  letter-spacing: 0;           /* tight like the reference */
+}
+.logo .brandline span{
+  color: var(--accent);        /* Services -> #00b4d8 */
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="container">
-      <div class="nav-content">
-        <a href="index.html" class="nav-brand">DOX Services</a>
-        <div class="nav-links">
-          <a href="#overview" class="nav-link active">Overview</a>
-          <a href="#plans" class="nav-link">Plans</a>
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#comparison" class="nav-link">Comparison</a>
-          <a href="presentation.html" class="btn-primary">View Presentation</a>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><span class="brandline">Dox<span>Services</span></span><span class="tagline">INTELLIGENT DNA</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Case Studies</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html" class="cta-button">Contact Us</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <div class="hero" id="overview">
-    <div class="container">
-      <div class="hero-content">
-        <span class="eyebrow">Professional Digital Transformation Services</span>
-        <h1>Elevate Your Organization's Digital Presence</h1>
-        <p class="hero-description">
-          Strategic content creation and management services designed to enhance brand visibility, 
-          drive stakeholder engagement, and establish your organization as a trusted authority in your industry.
-        </p>
+    <!-- Hero Section -->
+    <section class="hero dna-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Intelligent Solutions for Digital Transformation</h1>
+                <p>Leverage AI, Business Intelligence, and cutting-edge digital strategies to accelerate your business growth and outperform competitors.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="cta-button">Get Started</a>
+                    <a href="#" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions to drive your digital success</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Advanced machine learning and AI solutions to automate processes, gain insights, and enhance decision-making.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transform your data into actionable intelligence with our powerful BI tools and dashboards.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Data-driven marketing strategies that increase brand visibility, engagement, and conversion rates.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Comprehensive SEO services to improve your search engine rankings and drive qualified traffic.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>End-to-end project management solutions ensuring your initiatives are delivered on time and within budget.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Software Development</h3>
+                    <p>Custom software solutions tailored to your specific business needs and challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trusted by Leading Industries</h2>
+                <p>We deliver exceptional value across diverse sectors</p>
+            </div>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Banking & Finance</h3>
+                    <p>Secure financial solutions and data analytics for the banking sector.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tower-cell"></i>
+                    </div>
+                    <h3>Telecommunications</h3>
+                    <p>Network optimization and customer experience solutions for telecom providers.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Healthcare & Life Sciences</h3>
+                    <p>AI-powered diagnostics and healthcare data management solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h3>Oil & Energy</h3>
+                    <p>Optimization solutions for energy production and distribution.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Shipping & Logistics</h3>
+                    <p>Supply chain optimization and logistics management systems.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Industrial IoT and smart manufacturing solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Stock Exchanges</h3>
+                    <p>High-frequency trading algorithms and market analysis tools.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Aviation</h3>
+                    <p>Flight optimization, predictive maintenance, and aviation technology solutions.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Private Defense</h3>
+                    <p>Security systems, threat analysis, and defense technology solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidentiality Section -->
+    <section class="confidentiality">
+        <div class="container">
+            <div class="confidentiality-content">
+                <h2>Confidentiality & Discretion Guaranteed</h2>
+                <p>At DoxServices, we understand the sensitive nature of Fortune 100 business operations. Our protocols ensure complete confidentiality for all client engagements.</p>
+                
+                <div class="confidentiality-note">
+                    <p>"Due to the confidential nature of our work, we do not publicly disclose client names. DoxServices serves some of the world's leading banks, telecom providers, energy & logistics companies and manufacturing giants, competing at the scale of McKenney and beyond."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Global Leaders in AI-Powered Solutions</h2>
+                    <p>With over a decade of experience, we help Fortune 100 companies leverage cutting-edge technology to transform their digital presence and drive measurable results.</p>
+                    <p>Our team of data scientists, marketing experts, and AI specialists work together to create customized solutions that address your unique business challenges.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Client Retention</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Global Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">Avg. Growth</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="data-visualization dna-panel"><img class="chart-figure" src="./hero_chart.png" alt="Data visualization chart" /></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Schedule a consultation with our experts to discover how our AI-driven solutions can propel your business forward.</p>
+            <a href="#" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DoxServices</h3>
+                    <p>Driving digital transformation through AI, BI, and innovative marketing solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Artificial Intelligence</a></li>
+                        <li><a href="#">Business Intelligence</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Software Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 3720 Renovation Ave, New Jersey, USA</li>
+                        <li><i class="fas fa-phone"></i> +18765076645</li>
+                        <li><i class="fas fa-envelope"></i> doxcorp.services@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 DoxServices. All rights reserved. doxservices.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
         
-        <div class="hero-meta">
-          <div class="meta-item">
-            <div class="meta-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/>
-              </svg>
-            </div>
-            <div class="meta-text">
-              <span class="meta-label">Delivery Cadence</span>
-              <span class="meta-value">Weekly Deliverables</span>
-            </div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V12H14V22H12V12H9V10H12V6.5C12,4.84 13.35,3.5 15,3.5H17V2M9,2V4H7V2H9M11,2V4.34C10.42,4.84 10,5.63 10,6.5V7H7V6.5C7,4.84 8.35,3.5 10,3.5H11V2Z"/>
-              </svg>
-            </div>
-            <div class="meta-text">
-              <span class="meta-label">Content Formats</span>
-              <span class="meta-value">Digital Assets • Content • Media</span>
-            </div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4M16.59,7.58L10,14.17L7.41,11.59L6,13L10,17L18,9L16.59,7.58Z"/>
-              </svg>
-            </div>
-            <div class="meta-text">
-              <span class="meta-label">Primary Objectives</span>
-              <span class="meta-value">Awareness • Engagement • Growth</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Pricing Plans Section -->
-  <div class="content-section" id="plans">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Scalable Service Plans</h2>
-        <p class="section-subtitle">
-          Choose the plan that aligns with your organization's growth objectives and digital transformation requirements. 
-          All plans include professional execution, brand consistency, and strategic planning.
-        </p>
-      </div>
-
-      <div class="pricing-table-wrapper">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th style="width: 110px;">SERVICE TIER</th>
-              <th style="width: 140px;">MONTHLY INVESTMENT</th>
-              <th style="width: 130px;">WEEKLY DELIVERABLES</th>
-              <th style="width: 130px;">MONTHLY OUTPUT</th>
-              <th style="width: 120px;">DIGITAL ASSETS</th>
-              <th style="width: 150px;">STRATEGY LEVEL</th>
-              <th style="width: 150px;">ON-SITE CONSULTATION</th>
-              <th>IDEAL APPLICATION</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="plan-name">Foundation</td>
-              <td class="price">
-                <span class="price-main">JMD 100,000</span>
-                <span class="price-usd">USD $625</span>
-              </td>
-              <td style="text-align: center;"><span class="badge">1 per week</span></td>
-              <td>
-                <span class="value-highlight">4</span>
-                <span class="value-detail">deliverables per month</span>
-              </td>
-              <td>
-                <span class="value-highlight">2</span>
-                <span class="value-detail">assets bi-weekly</span>
-              </td>
-              <td><span class="badge-primary badge">Basic Strategy</span></td>
-              <td style="text-align: center;"><span class="badge">Not Included</span></td>
-              <td>Establishing consistent digital presence</td>
-            </tr>
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const industryCards = document.querySelectorAll('.industry-card');
             
-            <tr>
-              <td class="plan-name">Growth</td>
-              <td class="price">
-                <span class="price-main">JMD 120,000</span>
-                <span class="price-usd">USD $750</span>
-              </td>
-              <td style="text-align: center;"><span class="badge">2 per week</span></td>
-              <td>
-                <span class="value-highlight">8</span>
-                <span class="value-detail">deliverables per month</span>
-              </td>
-              <td>
-                <span class="value-highlight">4</span>
-                <span class="value-detail">weekly assets</span>
-              </td>
-              <td><span class="badge-primary badge">Full Roadmap</span></td>
-              <td style="text-align: center;"><span class="badge">Not Included</span></td>
-              <td>Accelerating business transformation</td>
-            </tr>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
             
-            <tr>
-              <td class="plan-name">Acceleration</td>
-              <td class="price">
-                <span class="price-main">JMD 140,000</span>
-                <span class="price-usd">USD $875</span>
-              </td>
-              <td style="text-align: center;"><span class="badge">3 per week</span></td>
-              <td>
-                <span class="value-highlight">12</span>
-                <span class="value-detail">consistent schedule</span>
-              </td>
-              <td>
-                <span class="value-highlight">6</span>
-                <span class="value-detail">optimized for impact</span>
-              </td>
-              <td><span class="badge-primary badge">Strategic Series</span></td>
-              <td style="text-align: center;"><span class="badge">Optional Add-On</span></td>
-              <td>Market leadership positioning</td>
-            </tr>
+            serviceCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
             
-            <tr>
-              <td class="plan-name">Enterprise</td>
-              <td class="price">
-                <span class="price-main">JMD 160,000</span>
-                <span class="price-usd">USD $1,000</span>
-              </td>
-              <td style="text-align: center;"><span class="badge">4 per week</span></td>
-              <td>
-                <span class="value-highlight">16</span>
-                <span class="value-detail">maximum consistency</span>
-              </td>
-              <td>
-                <span class="value-highlight">8+</span>
-                <span class="value-detail">reach maximization</span>
-              </td>
-              <td><span class="badge-primary badge">Campaign Management</span></td>
-              <td style="text-align: center;"><span class="badge-success badge">Monthly Visit Included</span></td>
-              <td>Complete digital excellence</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            industryCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 
-      <div class="info-box">
-        <div class="info-box-title">Currency Exchange Reference</div>
-        <div class="info-box-content">
-          All pricing uses a standardized exchange rate of 160 JMD = 1 USD for consistency. 
-          USD equivalents are provided for reference and international comparison purposes.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Feature Comparison -->
-  <div class="content-section" id="comparison" style="background: white; padding: 80px 0;">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Comprehensive Feature Comparison</h2>
-        <p class="section-subtitle">
-          Understand exactly what's included in each service tier and how features scale with your investment.
-        </p>
-      </div>
-
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Foundation</th>
-              <th>Growth</th>
-              <th>Acceleration</th>
-              <th>Enterprise</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Professional Content Development</td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Brand Consistency Management</td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Strategic Messaging</td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Monthly Digital Roadmap</td>
-              <td>Basic</td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Innovation & Trend Integration</td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Recurring Program Development</td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="check-icon">✓</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Campaign Planning & Execution</td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-            <tr>
-              <td>Monthly On-Site Strategic Sessions</td>
-              <td><span class="cross-icon">—</span></td>
-              <td><span class="cross-icon">—</span></td>
-              <td>Optional</td>
-              <td><span class="check-icon">✓</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Service Details -->
-  <div class="content-section" id="features">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">What's Included in Every Plan</h2>
-        <p class="section-subtitle">
-          Comprehensive digital transformation services designed to elevate your organization's impact
-        </p>
-      </div>
-
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
-            </svg>
-          </div>
-          <h3 class="feature-title">Content Development</h3>
-          <p class="feature-description">
-            Professional development and production of digital assets optimized for 
-            multiple platforms and stakeholder engagement.
-          </p>
-          <ul class="feature-list">
-            <li>Platform-optimized formatting</li>
-            <li>Professional quality assurance</li>
-            <li>Multi-channel integration</li>
-          </ul>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"/>
-            </svg>
-          </div>
-          <h3 class="feature-title">Brand Management</h3>
-          <p class="feature-description">
-            Consistent maintenance of your organization's visual identity across all digital touch
+    <!-- Metadata script injection -->
+    <script>
+      fetch('site.meta.json')
+        .then(response => response.json())
+        .then(function(data) {
+          document.querySelectorAll('.fa-map-marker-alt').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + data.address;
+          });
+          document.querySelectorAll('.fa-phone').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-phone"></i> ' + data.business_phone;
+          });
+          document.querySelectorAll('.fa-envelope').forEach(function(icon) {
+            var li = icon.parentElement;
+            li.innerHTML = '<i class="fas fa-envelope"></i> ' + data.contact_email;
+          });
+        })
+        .catch(function(err) { console.error('Failed to load metadata:', err); });
+    </script>
+</body>
+</html>
