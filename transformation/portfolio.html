@@ -1,320 +1,325 @@
-<!DOCTYPE html>
-<!-- saved from url=(0066)file:///C:/Users/Xavier/Downloads/marketing_gallery_no_search.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DoxServices | Marketing Manager Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./portfolio_files/css2" rel="stylesheet">
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DOX Services – Digital Marketing & Brand Work Portfolio</title>
   <style>
-    :root {
-      --primary: #0a2240;
-      --secondary: #1e4788;
-      --accent: #00b4d8;
-      --light: #f8f9fa;
-      --dark: #0b1220;
-      --card: #ffffff;
-      --muted: rgba(255,255,255,0.75);
-      --transition: all 0.25s ease;
+    :root{
+      --primary-blue: #0A2E5C;
+      --secondary-blue: #1E4D8B;
+      --accent-blue: #2563EB;
+      --light-blue: #3B82F6;
+      --bg-gray: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-light: #F1F5F9;
+      --success: #059669;
     }
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: var(--light);
-      color: #0f172a;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 {
-      font-family: 'Montserrat', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      line-height: 1.15;
+      padding: 0;
     }
-    a { color: inherit; text-decoration: none; }
 
-    /* Top bar */
-    header {
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-gray);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation — match packages.html */
+    .nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(10, 34, 64, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 12px;
-    }
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
-    }
-    .brand .brandline {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      color: #fff;
-    }
-    .brand .brandline span {
-      color: var(--accent);
-    }
-    .brand .tagline {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(0, 180, 216, 0.14);
-      color: #e6fbff;
-      border: 1px solid rgba(0, 180, 216, 0.25);
-      font-weight: 600;
-      font-size: 0.92rem;
-      white-space: nowrap;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
     }
 
-    /* Hero */
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-link.active {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-blue);
+    }
+
+    /* Hero — clean, enterprise */
     .hero {
-      background:
-        radial-gradient(1000px 600px at 20% 10%, rgba(0,180,216,0.18), transparent 60%),
-        radial-gradient(800px 500px at 85% 30%, rgba(30,71,136,0.30), transparent 55%),
-        linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff;
-      padding: 54px 0 36px;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: white;
+      padding: 80px 0 100px;
       position: relative;
       overflow: hidden;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 26px;
-      align-items: center;
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+      pointer-events: none;
     }
-    .headline {
-      font-size: clamp(2.0rem, 3.6vw, 3.1rem);
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
-    .sub {
-      max-width: 62ch;
-      color: rgba(255,255,255,0.88);
-      font-size: 1.02rem;
-      line-height: 1.65;
-    }
-    .name-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.18);
-    }
-    .name-card .name {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .name-card .role {
-      color: rgba(255,255,255,0.85);
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      padding: 8px 20px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
-    .name-card .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .chip {
-      font-size: 0.82rem;
+
+    .hero h1 {
+      font-size: 48px;
       font-weight: 700;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.9);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      max-width: 980px;
     }
-    .chip strong { color: #fff; }
 
+    .hero-description {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.95;
+      max-width: 860px;
+      margin-bottom: 0;
+    }
 
+    /* Content */
+    .content-section {
+      padding: 80px 0;
+    }
 
-    /* Gallery */
-    main {
-      padding: 28px 0 70px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
     }
-    .section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 6px 0 18px;
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 14px;
     }
-    .section-head h2 {
-      color: var(--primary);
-      font-size: 1.55rem;
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 760px;
+      margin: 0 auto;
     }
-    .section-head p {
-      margin: 0;
-      color: rgba(15,23,42,0.72);
-      max-width: 65ch;
-    }
+
+    /* Gallery grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 32px;
     }
+
     .card {
-      background: var(--card);
-      border-radius: 18px;
-      border: 1px solid rgba(15,23,42,0.10);
-      box-shadow: 0 14px 30px rgba(2,6,23,0.06);
+      background: white;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
       overflow: hidden;
-      transition: var(--transition);
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 42px rgba(2,6,23,0.10);
-      border-color: rgba(0,180,216,0.35);
-    }
+
     .card-head {
-      padding: 14px 14px 10px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .card-title {
-      font-weight: 800;
-      color: var(--primary);
-      font-size: 0.98rem;
-      line-height: 1.25;
-    }
-    .card-link {
-      font-weight: 800;
-      color: var(--accent);
-      font-size: 0.86rem;
-      white-space: nowrap;
-    }
-    .card-body {
-      padding: 0 14px 14px;
-    }
-
-    /* Embed style (scrollbars removed) */
-    .behance-embed {
-      width: 404px;
-      height: 316px;
-      border: none;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .behance-embed-wrapper {
-      overflow: hidden;
-      width: 404px;
-      height: 316px;
-      border-radius: 12px;
-      background: #0b1220;
-    }
-
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .name-card { order: -1; }
-    }
-    @media (max-width: 520px) {
-      .grid { grid-template-columns: 1fr; }
-      .behance-embed, .behance-embed-wrapper {
-        width: 100%;
-        height: 290px;
-      }
-    }
-
-    footer {
-      padding: 22px 0 40px;
-      color: rgba(15,23,42,0.65);
-      font-size: 0.92rem;
-    }
-    footer .foot {
+      padding: 16px 18px;
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(15,23,42,0.08);
-      padding-top: 16px;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .card-link {
+      color: var(--accent-blue);
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .card-link:hover {
+      color: var(--primary-blue);
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    /* Responsive embed (clean, no rounded corners) */
+    .behance-embed-wrapper {
+      width: 100%;
+      max-width: 404px;
+      margin: 0 auto;
+      background: #0b1220;
+      border: 1px solid var(--border-light);
+      aspect-ratio: 404 / 316;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .behance-embed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      display: block;
+    }
+
+    /* Footer — match packages style */
+    .footer {
+      background: var(--primary-blue);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero h1 { font-size: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .hero-description { font-size: 16px; }
+      .section-title { font-size: 28px; }
+      .section-subtitle { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 16px; }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="wrap">
-      <div class="topbar">
-        <div class="brand">
-          <div class="brandline">Dox<span>Services</span></div>
-          <div class="tagline">Marketing Portfolio Review</div>
-        </div>
-        <div class="pill">Client Review Gallery</div>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <h1 class="headline">Our Digital Transformation Portfolio</h1>
-          <p class="sub">
-            A selection of real client-facing work that shows how we help businesses modernize their digital presence — from brand identity and marketing content to campaign visuals and creative direction.
-          </p>
-
-        </div>
-
-        <div class="name-card" aria-label="Marketing Manager highlight">
-          <div class="name">Brendon Wesley</div>
-          <div class="role">Marketing &amp; Digital Strategy Lead</div>
-          <div class="meta">
-            <div class="chip"><strong>Focus:</strong> Digital marketing &amp; brand growth</div>
-            <div class="chip"><strong>Approach:</strong> Practical, results-driven execution</div>
-            <div class="chip"><strong>Outcome:</strong> Clear, modern customer communication</div>
-          </div>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="index.html" class="nav-brand">DOX Services</a>
+        <div class="nav-links">
+          <a href="#overview" class="nav-link active">Overview</a>
+          <a href="#gallery" class="nav-link">Portfolio</a>
+          <a href="packages.html" class="nav-link">Plans</a>
+          <a href="packages.html" class="btn-primary">View Presentation</a>
         </div>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <main>
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Embedded Projects</h2>
-          <p>Click “Open” on any card to view the full Behance project page in a new tab.</p>
-        </div>
-        <div style="font-weight:800; color: rgba(10,34,64,0.75);">
-          <span id="count">37</span> items
-        </div>
+  <div class="hero" id="overview">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Digital Marketing & Brand Work Portfolio</span>
+        <h1>Digital Marketing & Brand Work Portfolio</h1>
+        <p class="hero-description">
+          A curated selection of client-facing work that demonstrates how DOX Services strengthens digital presence —
+          from brand identity and campaign visuals to social content designed for awareness, engagement, and growth.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Portfolio Gallery</h2>
+        <p class="section-subtitle">
+          Selected examples across social content, rebrands, campaign assets, and visual systems. Each tile opens to the full project for deeper review.
+        </p>
       </div>
 
-      <div class="grid" id="grid">
-
+      <div class="grid">
         <article class="card" data-title="social media posts">
           <div class="card-head">
             <div class="card-title">Social Media Posts</div>
@@ -322,456 +327,675 @@
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/227065101.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/227065101?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="social media layout">
+        </article><article class="card" data-title="social media layout">
           <div class="card-head">
             <div class="card-title">Social Media Layout</div>
             <a class="card-link" href="https://www.behance.net/gallery/214388761/Social-Media-Layout" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/214388761.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/214388761?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="corporate social media">
+        </article><article class="card" data-title="corporate social media">
           <div class="card-head">
             <div class="card-title">Corporate Social Media</div>
             <a class="card-link" href="https://www.behance.net/gallery/197197091/Corporate-Social-Media" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/197197091.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/197197091?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="social media posts 2">
+        </article><article class="card" data-title="social media posts 2">
           <div class="card-head">
             <div class="card-title">Social Media Posts 2</div>
             <a class="card-link" href="https://www.behance.net/gallery/228285877/Social-Media-Posts-2" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/228285877.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/228285877?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="montego bay united | rebrand">
+        </article><article class="card" data-title="montego bay united | rebrand">
           <div class="card-head">
             <div class="card-title">Montego Bay United | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/206720425/Montego-Bay-United-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/206720425.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/206720425?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="thick chicken ui design">
+        </article><article class="card" data-title="thick chicken ui design">
           <div class="card-head">
             <div class="card-title">Thick Chicken UI Design</div>
             <a class="card-link" href="https://www.behance.net/gallery/164784935/Thick-Chicken-UI-Design" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/164784935.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/164784935?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="covid-19">
+        </article><article class="card" data-title="covid-19">
           <div class="card-head">
             <div class="card-title">Covid-19</div>
             <a class="card-link" href="https://www.behance.net/gallery/97594043/Covid-19" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/97594043.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/97594043?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="jamaica moves">
+        </article><article class="card" data-title="jamaica moves">
           <div class="card-head">
             <div class="card-title">Jamaica Moves</div>
             <a class="card-link" href="https://www.behance.net/gallery/97593865/Jamaica-Moves" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/97593865.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/97593865?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="pringles proposal">
+        </article><article class="card" data-title="pringles proposal">
           <div class="card-head">
             <div class="card-title">Pringles Proposal</div>
             <a class="card-link" href="https://www.behance.net/gallery/120762917/Pringles-Proposal" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/120762917.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/120762917?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="aura">
+        </article><article class="card" data-title="aura">
           <div class="card-head">
             <div class="card-title">AURA</div>
             <a class="card-link" href="https://www.behance.net/gallery/85889307/AURA" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/85889307.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/85889307?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="events flyer">
+        </article><article class="card" data-title="events flyer">
           <div class="card-head">
             <div class="card-title">Events Flyer</div>
             <a class="card-link" href="https://www.behance.net/gallery/84140465/Events-Flyer" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/84140465.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/84140465?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="real mona | rebrand">
+        </article><article class="card" data-title="real mona | rebrand">
           <div class="card-head">
             <div class="card-title">REAL MONA | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/187699351/REAL-MONA-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/187699351.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/187699351?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="wrexham | rebrand">
+        </article><article class="card" data-title="wrexham | rebrand">
           <div class="card-head">
             <div class="card-title">Wrexham | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/171589945/Wrexham-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/171589945.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/171589945?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="faulkland football club | rebrand">
+        </article><article class="card" data-title="faulkland football club | rebrand">
           <div class="card-head">
             <div class="card-title">Faulkland Football Club | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/165291243/Faulkland-Football-Club-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/165291243.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/165291243?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="molynes united fc | rebrand">
+        </article><article class="card" data-title="molynes united fc | rebrand">
           <div class="card-head">
             <div class="card-title">Molynes United FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/147720939/Molynes-United-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/147720939.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/147720939?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="humble lion fc | rebrand">
+        </article><article class="card" data-title="humble lion fc | rebrand">
           <div class="card-head">
             <div class="card-title">Humble Lion FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/147218125/Humble-Lion-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/147218125.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/147218125?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="astroliga">
+        </article><article class="card" data-title="astroliga">
           <div class="card-head">
             <div class="card-title">Astroliga</div>
             <a class="card-link" href="https://www.behance.net/gallery/126303805/Astroliga" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/126303805.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/126303805?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="cavalier fc | rebrand">
+        </article><article class="card" data-title="cavalier fc | rebrand">
           <div class="card-head">
             <div class="card-title">Cavalier FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/123841483/Cavalier-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/123841483.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/123841483?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="dunbeholden fc | rebrand">
+        </article><article class="card" data-title="dunbeholden fc | rebrand">
           <div class="card-head">
             <div class="card-title">Dunbeholden FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/123411365/Dunbeholden-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/123411365.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/123411365?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="tivoli gardens fc | rebrand">
+        </article><article class="card" data-title="tivoli gardens fc | rebrand">
           <div class="card-head">
             <div class="card-title">Tivoli Gardens FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/123045421/Tivoli-Gardens-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/123045421.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/123045421?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="harbour view fc | rebrand">
+        </article><article class="card" data-title="harbour view fc | rebrand">
           <div class="card-head">
             <div class="card-title">Harbour View FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/121234979/Harbour-View-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/121234979.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/121234979?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="portmore united fc | rebrand">
+        </article><article class="card" data-title="portmore united fc | rebrand">
           <div class="card-head">
             <div class="card-title">Portmore United FC | Rebrand</div>
             <a class="card-link" href="https://www.behance.net/gallery/121145553/Portmore-United-FC-Rebrand" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/121145553.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/121145553?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="iron kyte live">
+        </article><article class="card" data-title="iron kyte live">
           <div class="card-head">
             <div class="card-title">Iron Kyte Live</div>
             <a class="card-link" href="https://www.behance.net/gallery/84139387/Iron-Kyte-Live" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/84139387.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/84139387?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="as templier">
+        </article><article class="card" data-title="as templier">
           <div class="card-head">
             <div class="card-title">AS Templier</div>
             <a class="card-link" href="https://www.behance.net/gallery/57288641/AS-Templier" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/57288641.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/57288641?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="trixi&#39;s diner">
+        </article><article class="card" data-title="trixi's diner">
           <div class="card-head">
             <div class="card-title">Trixi's Diner</div>
             <a class="card-link" href="https://www.behance.net/gallery/42854003/Trixis-Diner" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/42854003.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/42854003?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="bananos cereal">
+        </article><article class="card" data-title="bananos cereal">
           <div class="card-head">
             <div class="card-title">Bananos Cereal</div>
             <a class="card-link" href="https://www.behance.net/gallery/42837603/Bananos-Cereal" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/42837603.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/42837603?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="ksafa super league project">
+        </article><article class="card" data-title="ksafa super league project">
           <div class="card-head">
             <div class="card-title">Ksafa Super League Project</div>
             <a class="card-link" href="https://www.behance.net/gallery/42163113/Ksafa-Super-League-Project" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/42163113.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/42163113?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="football kit concepts">
+        </article><article class="card" data-title="football kit concepts">
           <div class="card-head">
             <div class="card-title">Football Kit Concepts</div>
             <a class="card-link" href="https://www.behance.net/gallery/36928237/Football-Kit-Concepts" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/36928237.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/36928237?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="rodbjorn fk">
+        </article><article class="card" data-title="rodbjorn fk">
           <div class="card-head">
             <div class="card-title">Rodbjorn FK</div>
             <a class="card-link" href="https://www.behance.net/gallery/32712853/Rodbjorn-FK" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/32712853.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/32712853?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="raging bull lager">
+        </article><article class="card" data-title="raging bull lager">
           <div class="card-head">
             <div class="card-title">Raging Bull Lager</div>
             <a class="card-link" href="https://www.behance.net/gallery/32712393/Raging-Bull-Lager" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/32712393.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/32712393?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="citra soda pop">
+        </article><article class="card" data-title="citra soda pop">
           <div class="card-head">
             <div class="card-title">Citra Soda Pop</div>
             <a class="card-link" href="https://www.behance.net/gallery/32483585/Citra-Soda-Pop" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/32483585.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/32483585?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="blackbear whiskey">
+        </article><article class="card" data-title="blackbear whiskey">
           <div class="card-head">
             <div class="card-title">Blackbear Whiskey</div>
             <a class="card-link" href="https://www.behance.net/gallery/32469129/Blackbear-Whiskey" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/32469129.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/32469129?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="joga bonito">
+        </article><article class="card" data-title="joga bonito">
           <div class="card-head">
             <div class="card-title">Joga Bonito</div>
             <a class="card-link" href="https://www.behance.net/gallery/2569691/Joga-Bonito" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/2569691.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/2569691?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="pop culture">
+        </article><article class="card" data-title="pop culture">
           <div class="card-head">
             <div class="card-title">Pop Culture</div>
             <a class="card-link" href="https://www.behance.net/gallery/3616425/Pop-Culture" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/3616425.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/3616425?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="the 27 club">
+        </article><article class="card" data-title="the 27 club">
           <div class="card-head">
             <div class="card-title">The 27 Club</div>
             <a class="card-link" href="https://www.behance.net/gallery/3616135/The-27-Club" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/3616135.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/3616135?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="kony 2012">
+        </article><article class="card" data-title="kony 2012">
           <div class="card-head">
             <div class="card-title">KONY 2012</div>
             <a class="card-link" href="https://www.behance.net/gallery/3328373/KONY-2012" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/3328373.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/3328373?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
-        </article>
-
-        <article class="card" data-title="suicide">
+        </article><article class="card" data-title="suicide">
           <div class="card-head">
             <div class="card-title">Suicide</div>
             <a class="card-link" href="https://www.behance.net/gallery/867908/Suicide" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
           <div class="card-body">
             <div class="behance-embed-wrapper">
-              <iframe class="behance-embed" src="./portfolio_files/867908.html" scrolling="no" frameborder="0" allowfullscreen="" loading="lazy" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe
+                class="behance-embed"
+                src="https://www.behance.net/embed/project/867908?ilo0=1"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                allow="clipboard-write"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
         </article>
-
       </div>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <div class="wrap">
-      <div class="foot">
-        <div><strong>DoxServices</strong> — Marketing review gallery</div>
-        <div>Embeds are scroll-free by design.</div>
-      </div>
+  <div class="footer">
+    <div class="container">
+      <div class="footer-content">© DOX Services — Digital Marketing & Brand Work Portfolio</div>
     </div>
-  </footer>
+  </div>
 
-
-
-</body></html>
+</body>
+</html>
