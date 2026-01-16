@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Dox Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
     <style>
         :root {
@@ -14,6 +13,7 @@
             --light: #f8f9fa;
             --dark: #212529;
             --success: #28a745;
+            --error: #dc3545;
             --transition: all 0.3s ease;
         }
         
@@ -114,6 +114,12 @@
             cursor: pointer;
         }
         
+        .hamburger svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
         /* Contact Form Styles */
         .contact-section {
             padding: 140px 0 80px;
@@ -182,6 +188,10 @@
             box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
         }
         
+        .form-control.error {
+            border-color: var(--error);
+        }
+        
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
@@ -201,11 +211,76 @@
             justify-self: center;
             min-width: 200px;
             margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         
-        .submit-btn:hover {
+        .submit-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
             background: #0099bb;
             transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Alert Messages */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .alert.show {
+            display: flex;
+            align-items: center;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-right: 10px;
+            fill: currentColor;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .contact-info {
@@ -232,39 +307,52 @@
         .info-icon {
             width: 60px;
             height: 60px;
-            background: rgba(0, 180, 216, 0.1);
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
-            color: var(--accent);
-            font-size: 1.5rem;
+        }
+        
+        .info-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
         }
         
         .info-card h3 {
-            margin-bottom: 10px;
             color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .info-card p {
+            color: #666;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--primary);
             color: white;
-            padding: 70px 0 30px;
+            padding: 50px 0 20px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .footer-column h3 {
-            font-size: 1.2rem;
             margin-bottom: 20px;
             color: var(--accent);
+        }
+        
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 20px;
         }
         
         .footer-links {
@@ -273,87 +361,105 @@
         
         .footer-links li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         
         .footer-links a {
-            opacity: 0.8;
+            color: #ccc;
             transition: var(--transition);
         }
         
         .footer-links a:hover {
-            opacity: 1;
             color: var(--accent);
+        }
+        
+        .footer-links svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            margin-right: 8px;
+            flex-shrink: 0;
         }
         
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
         }
         
         .social-links a {
             width: 40px;
             height: 40px;
+            background: var(--secondary);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
         }
         
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
         .social-links a:hover {
             background: var(--accent);
+            transform: translateY(-3px);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            color: #ccc;
         }
         
         .footer-legal {
-            margin-top: 16px;
-            opacity: .8;
-            font-size: .9rem;
             text-align: center;
+            padding-top: 10px;
+            color: #ccc;
         }
         
         .footer-legal a {
-            color: inherit;
-            text-decoration: none;
-            margin: 0 6px;
+            color: #ccc;
+            transition: var(--transition);
         }
         
         .footer-legal a:hover {
-            opacity: 1;
-            text-decoration: underline;
+            color: var(--accent);
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
+                right: -100%;
                 top: 80px;
-                left: -100%;
-                background: var(--primary);
-                width: 100%;
-                height: calc(100vh - 80px);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: 0.5s;
-                gap: 30px;
+                background-color: var(--primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
             }
             
             .nav-links.active {
-                left: 0;
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
             }
             
             .hamburger {
                 display: block;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
             
             .contact-form {
@@ -393,7 +499,9 @@
             </ul>
             
             <div class="hamburger">
-                <i class="fas fa-bars"></i>
+                <svg id="hamburgerIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
             </div>
         </div>
     </header>
@@ -407,64 +515,90 @@
                     <p>Have questions or ready to start a project? Reach out to our team today.</p>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
+                <!-- Alert Messages -->
+                <div id="alertSuccess" class="alert alert-success">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+                </div>
+                <div id="alertError" class="alert alert-error">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                    <span id="errorMessage">Oops! Something went wrong. Please try again.</span>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="contact-form" id="contactForm" action="send-email.php" method="POST">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your name" required>
+                        <label for="name">Full Name <span style="color: red;">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Your email address" required>
+                        <label for="email">Email Address <span style="color: red;">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="company">Company</label>
-                        <input type="text" id="company" class="form-control" placeholder="Your company name">
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company name">
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="Your phone number">
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+1 (555) 000-0000">
                     </div>
                     
                     <div class="form-group full">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" placeholder="What is this regarding?" required>
+                        <label for="subject">Subject <span style="color: red;">*</span></label>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="What is this regarding?" required>
                     </div>
                     
                     <div class="form-group full">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                        <label for="message">Message <span style="color: red;">*</span></label>
+                        <textarea id="message" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                        Send Message
+                    </button>
                 </form>
             </div>
             
             <div class="contact-info">
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
                     </div>
                     <h3>Our Location</h3>
-                    <p>3720 Renovation Ave, New Jersey, USA</p>
+                    <p>3720 Renovation Ave<br>New Jersey, USA</p>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-phone"></i>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
                     </div>
                     <h3>Phone Number</h3>
-                    <p>+18765076645</p>
+                    <p><a href="tel:+18765076645">+1 (876) 507-6645</a></p>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
                     </div>
                     <h3>Email Address</h3>
-                    <p>doxcorp.services@gmail.com</p>
+                    <p><a href="mailto:xavier@doxservices.com">xavier@doxservices.com</a></p>
                 </div>
             </div>
         </div>
@@ -478,10 +612,26 @@
                     <h3>DoxServices</h3>
                     <p>Driving digital transformation through AI, BI, and innovative marketing solutions.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.70 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 
@@ -500,61 +650,183 @@
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 3720 Renovation Ave, New Jersey, USA</li>
-                        <li><i class="fas fa-phone"></i> +18765076645</li>
-                        <li><i class="fas fa-envelope"></i> doxcorp.services@gmail.com</li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            3720 Renovation Ave, New Jersey, USA
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                            </svg>
+                            <a href="tel:+18765076645">+1 (876) 507-6645</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <a href="mailto:xavier@doxservices.com">xavier@doxservices.com</a>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 DoxServices. All rights reserved. doxservices.com</p>
+                <p>&copy; 2025 DoxServices. All rights reserved.</p>
             </div>
-            <div class="footer-legal"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+            </div>
         </div>
     </footer>
 
     <script>
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
         const navLinks = document.querySelector('.nav-links');
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            hamburger.querySelector('i').classList.toggle('fa-bars');
-            hamburger.querySelector('i').classList.toggle('fa-times');
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            // Simple form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && subject && message) {
-                // In a real application, you would send the form data to a server here
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
+            // Toggle between hamburger and close icon
+            if (navLinks.classList.contains('active')) {
+                hamburgerIcon.innerHTML = '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>';
             } else {
-                alert('Please fill in all required fields.');
+                hamburgerIcon.innerHTML = '<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>';
             }
         });
         
-        // Add animation to info cards
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburgerIcon.innerHTML = '<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>';
+            });
+        });
+        
+        // Form submission with validation
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const alertSuccess = document.getElementById('alertSuccess');
+        const alertError = document.getElementById('alertError');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Email validation
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Phone validation (optional field)
+        function isValidPhone(phone) {
+            if (!phone) return true;
+            const re = /^[\d\s\-\+\(\)]+$/;
+            return re.test(phone) && phone.replace(/\D/g, '').length >= 10;
+        }
+        
+        // Show alert message
+        function showAlert(type, message) {
+            if (type === 'success') {
+                alertSuccess.classList.add('show');
+                alertError.classList.remove('show');
+                setTimeout(() => alertSuccess.classList.remove('show'), 5000);
+            } else {
+                errorMessage.textContent = message;
+                alertError.classList.add('show');
+                alertSuccess.classList.remove('show');
+                setTimeout(() => alertError.classList.remove('show'), 5000);
+            }
+        }
+        
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validation
+            if (!name || !email || !subject || !message) {
+                showAlert('error', 'Please fill in all required fields.');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showAlert('error', 'Please enter a valid email address.');
+                document.getElementById('email').classList.add('error');
+                return;
+            }
+            
+            if (phone && !isValidPhone(phone)) {
+                showAlert('error', 'Please enter a valid phone number.');
+                document.getElementById('phone').classList.add('error');
+                return;
+            }
+            
+            // Remove error styling
+            document.querySelectorAll('.form-control').forEach(el => el.classList.remove('error'));
+            
+            // Disable submit button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                </svg>
+                Sending...
+            `;
+            
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAlert('success');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.error || 'Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('error', 'There was a problem sending your message. Please try again or email us directly at xavier@doxservices.com');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    Send Message
+                `;
+            }
+        });
+        
+        // Remove error styling on input
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+        
+        // Add animation to info cards on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const infoCards = document.querySelectorAll('.info-card');
             
@@ -574,27 +846,6 @@
                 observer.observe(card);
             });
         });
-    </script>
-
-    <!-- Metadata script injection -->
-    <script>
-      fetch('site.meta.json')
-        .then(response => response.json())
-        .then(function(data) {
-          document.querySelectorAll('.fa-map-marker-alt').forEach(function(icon) {
-            var li = icon.parentElement;
-            li.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + data.address;
-          });
-          document.querySelectorAll('.fa-phone').forEach(function(icon) {
-            var li = icon.parentElement;
-            li.innerHTML = '<i class="fas fa-phone"></i> ' + data.business_phone;
-          });
-          document.querySelectorAll('.fa-envelope').forEach(function(icon) {
-            var li = icon.parentElement;
-            li.innerHTML = '<i class="fas fa-envelope"></i> ' + data.contact_email;
-          });
-        })
-        .catch(function(err) { console.error('Failed to load metadata:', err); });
     </script>
 </body>
 </html>
