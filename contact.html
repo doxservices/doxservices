@@ -70,11 +70,19 @@
             font-size: 1.8rem;
             font-weight: 700;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
         }
-        
-        .logo span {
-            color: var(--accent);
+        .logo .brandline { color: #ffffff; font-weight: 700; letter-spacing: 0; }
+        .logo .brandline span { color: var(--accent); font-weight: 700; }
+        .logo .tagline {
+            display: block;
+            margin-top: 2px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
         }
         
         .nav-links {
@@ -488,12 +496,13 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Dox<span>Services</span></a>
-            
+            <a href="index.html" class="logo"><span class="brandline">Dox<span>Services</span></span><span class="tagline">INTELLIGENT DNA</span></a>
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="cta-button">Contact Us</a></li>
             </ul>
@@ -598,7 +607,7 @@
                         </svg>
                     </div>
                     <h3>Email Address</h3>
-                    <p><a href="mailto:xavier@doxservices.com">xavier@doxservices.com</a></p>
+                    <p><a href="mailto:doxcorp.services@gmail.com">doxcorp.services@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -638,12 +647,12 @@
                 <div class="footer-column">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Artificial Intelligence</a></li>
-                        <li><a href="#">Business Intelligence</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">SEO Optimization</a></li>
-                        <li><a href="#">Project Management</a></li>
-                        <li><a href="#">Software Development</a></li>
+                        <li><a href="services.html">Artificial Intelligence</a></li>
+                        <li><a href="services.html">Business Intelligence</a></li>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                        <li><a href="services.html">SEO Optimization</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="services.html">Software Development</a></li>
                     </ul>
                 </div>
                 
@@ -651,8 +660,9 @@
                     <h3>Company</h3>
                     <ul class="footer-links">
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -676,7 +686,7 @@
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
-                            <a href="mailto:xavier@doxservices.com">xavier@doxservices.com</a>
+                            <a href="mailto:doxcorp.services@gmail.com">doxcorp.services@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -807,7 +817,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showAlert('error', 'There was a problem sending your message. Please try again or email us directly at xavier@doxservices.com');
+                showAlert('error', 'There was a problem sending your message. Please try again or email us directly at doxcorp.services@gmail.com');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `
