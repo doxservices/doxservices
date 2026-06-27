@@ -56,19 +56,13 @@
         }
         .feature-list li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
 
-        .icon-block {
+        .service-img {
             width: 100%;
             aspect-ratio: 4/3;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: rgba(255,255,255,0.15);
+            object-fit: cover;
+            display: block;
         }
-
-        .icon-block i { color: rgba(0,180,216,0.6); font-size: 4rem; }
 
         @media (max-width: 768px) {
             .service-inner,
@@ -128,7 +122,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-brain"></i></div>
+                <img src="photos/service-ai.jpg" alt="Artificial Intelligence" class="service-img">
             </div>
         </div>
     </div>
@@ -152,7 +146,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-chart-line"></i></div>
+                <img src="photos/service-bi.jpg" alt="Business Intelligence" class="service-img">
             </div>
         </div>
     </div>
@@ -176,7 +170,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-bullseye"></i></div>
+                <img src="photos/service-marketing.jpg" alt="Digital Marketing" class="service-img">
             </div>
         </div>
     </div>
@@ -200,7 +194,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-search"></i></div>
+                <img src="photos/service-seo.jpg" alt="SEO Optimization" class="service-img">
             </div>
         </div>
     </div>
@@ -224,7 +218,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-tasks"></i></div>
+                <img src="photos/service-pm.jpg" alt="Project Management" class="service-img">
             </div>
         </div>
     </div>
@@ -248,7 +242,7 @@
                 </ul>
             </div>
             <div class="service-visual">
-                <div class="icon-block"><i class="fas fa-code"></i></div>
+                <img src="photos/service-dev.jpg" alt="Software Development" class="service-img">
             </div>
         </div>
     </div>
