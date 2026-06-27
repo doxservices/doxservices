@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Transformation Services – Professional Plans</title>
+  <style>
+    :root{
+      --primary-blue: #0A2E5C;
+      --secondary-blue: #1E4D8B;
+      --accent-blue: #2563EB;
+      --light-blue: #3B82F6;
+      --bg-gray: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --border-light: #F1F5F9;
+      --success: #059669;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-gray);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    .nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-link.active {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-blue);
+    }
+    
+    /* Header Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: white;
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      max-width: 900px;
+    }
+    
+    .hero-description {
+      font-size: 20px;
+      line-height: 1.6;
+      opacity: 0.95;
+      max-width: 800px;
+      margin-bottom: 32px;
+    }
+    
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .meta-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meta-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+    
+    .meta-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .meta-label {
+      font-size: 12px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .meta-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    /* Content Section */
+    .content-section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+    }
+    
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Pricing Table */
+    .pricing-table-wrapper {
+      background: white;
+      box-shadow: var(--shadow-xl);
+      overflow-x: auto;
+      margin-bottom: 40px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .pricing-table {
+      width: 100%;
+      min-width: 1100px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    
+    .pricing-table thead {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: white;
+    }
+    
+    .pricing-table th {
+      padding: 18px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    
+    .pricing-table tbody tr {
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.2s;
+    }
+    
+    .pricing-table tbody tr:hover {
+      background: var(--bg-gray);
+    }
+    
+    .pricing-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    
+    .pricing-table td {
+      padding: 20px 16px;
+      vertical-align: middle;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .plan-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--primary-blue);
+      white-space: nowrap;
+    }
+    
+    .price {
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    
+    .price-main {
+      font-size: 20px;
+      display: block;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+    
+    .price-usd {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      display: block;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--bg-gray);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    
+    .badge-primary {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--accent-blue);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+    
+    .badge-success {
+      background: rgba(5, 150, 105, 0.1);
+      color: var(--success);
+      border-color: rgba(5, 150, 105, 0.2);
+    }
+    
+    .value-highlight {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary-blue);
+      display: block;
+      line-height: 1.3;
+    }
+    
+    .value-detail {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--light-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+    }
+    
+    .feature-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .feature-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+    
+    .feature-list li {
+      padding-left: 24px;
+      position: relative;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+    
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+    
+    /* Comparison Table */
+    .comparison-table {
+      background: white;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      margin-top: 40px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .comparison-table thead {
+      background: var(--bg-gray);
+      border-bottom: 2px solid var(--border-color);
+    }
+    
+    .comparison-table th {
+      padding: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary-blue);
+      font-size: 14px;
+    }
+    
+    .comparison-table th:first-child {
+      text-align: left;
+      width: 40%;
+    }
+    
+    .comparison-table td {
+      padding: 20px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .comparison-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    
+    .check-icon {
+      color: var(--success);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    
+    .cross-icon {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    
+    /* Info Box */
+    .info-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.05));
+      border-left: 4px solid var(--accent-blue);
+      padding: 24px;
+      margin: 40px 0;
+    }
+    
+    .info-box-title {
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    .info-box-content {
+      color: var(--text-secondary);
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--primary-blue);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-content {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero-description {
+        font-size: 16px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="index.html" class="nav-brand">DOX Services</a>
+        <div class="nav-links">
+          <a href="#overview" class="nav-link active">Overview</a>
+          <a href="#plans" class="nav-link">Plans</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#comparison" class="nav-link">Comparison</a>
+          <a href="packages.html" class="btn-primary">View Presentation</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero" id="overview">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Professional Digital Transformation Services</span>
+        <h1>Elevate Your Organization's Digital Presence</h1>
+        <p class="hero-description">
+          Strategic content creation and management services designed to enhance brand visibility, 
+          drive stakeholder engagement, and establish your organization as a trusted authority in your industry.
+        </p>
+        
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/>
+              </svg>
+            </div>
+            <div class="meta-text">
+              <span class="meta-label">Delivery Cadence</span>
+              <span class="meta-value">Weekly Deliverables</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V12H14V22H12V12H9V10H12V6.5C12,4.84 13.35,3.5 15,3.5H17V2M9,2V4H7V2H9M11,2V4.34C10.42,4.84 10,5.63 10,6.5V7H7V6.5C7,4.84 8.35,3.5 10,3.5H11V2Z"/>
+              </svg>
+            </div>
+            <div class="meta-text">
+              <span class="meta-label">Content Formats</span>
+              <span class="meta-value">Digital Assets • Content • Media</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4M16.59,7.58L10,14.17L7.41,11.59L6,13L10,17L18,9L16.59,7.58Z"/>
+              </svg>
+            </div>
+            <div class="meta-text">
+              <span class="meta-label">Primary Objectives</span>
+              <span class="meta-value">Awareness • Engagement • Growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Plans Section -->
+  <div class="content-section" id="plans">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Scalable Service Plans</h2>
+        <p class="section-subtitle">
+          Choose the plan that aligns with your organization's growth objectives and digital transformation requirements. 
+          All plans include professional execution, brand consistency, and strategic planning.
+        </p>
+      </div>
+
+      <div class="pricing-table-wrapper">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th style="width: 110px;">SERVICE TIER</th>
+              <th style="width: 140px;">MONTHLY INVESTMENT</th>
+              <th style="width: 130px;">WEEKLY DELIVERABLES</th>
+              <th style="width: 130px;">MONTHLY OUTPUT</th>
+              <th style="width: 120px;">DIGITAL ASSETS</th>
+              <th style="width: 150px;">STRATEGY LEVEL</th>
+              <th style="width: 150px;">ON-SITE CONSULTATION</th>
+              <th>IDEAL APPLICATION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name">Foundation</td>
+              <td class="price">
+                <span class="price-main">JMD 100,000</span>
+                <span class="price-usd">USD $625</span>
+              </td>
+              <td style="text-align: center;"><span class="badge">1 per week</span></td>
+              <td>
+                <span class="value-highlight">4</span>
+                <span class="value-detail">deliverables per month</span>
+              </td>
+              <td>
+                <span class="value-highlight">2</span>
+                <span class="value-detail">assets bi-weekly</span>
+              </td>
+              <td><span class="badge-primary badge">Basic Strategy</span></td>
+              <td style="text-align: center;"><span class="badge">Not Included</span></td>
+              <td>Establishing consistent digital presence</td>
+            </tr>
+            
+            <tr>
+              <td class="plan-name">Growth</td>
+              <td class="price">
+                <span class="price-main">JMD 120,000</span>
+                <span class="price-usd">USD $750</span>
+              </td>
+              <td style="text-align: center;"><span class="badge">2 per week</span></td>
+              <td>
+                <span class="value-highlight">8</span>
+                <span class="value-detail">deliverables per month</span>
+              </td>
+              <td>
+                <span class="value-highlight">4</span>
+                <span class="value-detail">weekly assets</span>
+              </td>
+              <td><span class="badge-primary badge">Full Roadmap</span></td>
+              <td style="text-align: center;"><span class="badge">Not Included</span></td>
+              <td>Accelerating business transformation</td>
+            </tr>
+            
+            <tr>
+              <td class="plan-name">Acceleration</td>
+              <td class="price">
+                <span class="price-main">JMD 140,000</span>
+                <span class="price-usd">USD $875</span>
+              </td>
+              <td style="text-align: center;"><span class="badge">3 per week</span></td>
+              <td>
+                <span class="value-highlight">12</span>
+                <span class="value-detail">consistent schedule</span>
+              </td>
+              <td>
+                <span class="value-highlight">6</span>
+                <span class="value-detail">optimized for impact</span>
+              </td>
+              <td><span class="badge-primary badge">Strategic Series</span></td>
+              <td style="text-align: center;"><span class="badge">Optional Add-On</span></td>
+              <td>Market leadership positioning</td>
+            </tr>
+            
+            <tr>
+              <td class="plan-name">Enterprise</td>
+              <td class="price">
+                <span class="price-main">JMD 160,000</span>
+                <span class="price-usd">USD $1,000</span>
+              </td>
+              <td style="text-align: center;"><span class="badge">4 per week</span></td>
+              <td>
+                <span class="value-highlight">16</span>
+                <span class="value-detail">maximum consistency</span>
+              </td>
+              <td>
+                <span class="value-highlight">8+</span>
+                <span class="value-detail">reach maximization</span>
+              </td>
+              <td><span class="badge-primary badge">Campaign Management</span></td>
+              <td style="text-align: center;"><span class="badge-success badge">Monthly Visit Included</span></td>
+              <td>Complete digital excellence</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">Currency Exchange Reference</div>
+        <div class="info-box-content">
+          All pricing uses a standardized exchange rate of 160 JMD = 1 USD for consistency. 
+          USD equivalents are provided for reference and international comparison purposes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Comparison -->
+  <div class="content-section" id="comparison" style="background: white; padding: 80px 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Comprehensive Feature Comparison</h2>
+        <p class="section-subtitle">
+          Understand exactly what's included in each service tier and how features scale with your investment.
+        </p>
+      </div>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Foundation</th>
+              <th>Growth</th>
+              <th>Acceleration</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Professional Content Development</td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Brand Consistency Management</td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Strategic Messaging</td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Monthly Digital Roadmap</td>
+              <td>Basic</td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Innovation & Trend Integration</td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Recurring Program Development</td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="check-icon">✓</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Campaign Planning & Execution</td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+            <tr>
+              <td>Monthly On-Site Strategic Sessions</td>
+              <td><span class="cross-icon">—</span></td>
+              <td><span class="cross-icon">—</span></td>
+              <td>Optional</td>
+              <td><span class="check-icon">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Details -->
+  <div class="content-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What's Included in Every Plan</h2>
+        <p class="section-subtitle">
+          Comprehensive digital transformation services designed to elevate your organization's impact
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Content Development</h3>
+          <p class="feature-description">
+            Professional development and production of digital assets optimized for 
+            multiple platforms and stakeholder engagement.
+          </p>
+          <ul class="feature-list">
+            <li>Platform-optimized formatting</li>
+            <li>Professional quality assurance</li>
+            <li>Multi-channel integration</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Brand Management</h3>
+          <p class="feature-description">
+            Consistent maintenance of your organization's visual identity across all digital touch
