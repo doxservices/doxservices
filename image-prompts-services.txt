@@ -1,0 +1,45 @@
+SERVICE IMAGE PROMPTS — DoxServices
+Brand colors: deep navy #0a2240 | steel blue #1e4788 | electric teal #00b4d8
+Aspect ratio: 4:3 | Style: photorealistic, cinematic, no people, no text
+================================================================================
+
+
+IMAGE 1 — Artificial Intelligence (services.html, Service 01)
+---------------------------------------------------------------
+Cinematic macro visualization of a deep neural network — thousands of glowing teal nodes connected by luminous data pathways, floating in dark navy space. Subtle Caribbean island coastline geometry dissolving into the background like a ghost layer. 3D photorealistic render. Deep navy #0a2240 background, electric teal #00b4d8 node highlights, white core glow on active pathways. Ultra-sharp depth of field, no text, no people. Aspect ratio 4:3.
+
+
+IMAGE 2 — Business Intelligence (services.html, Service 02)
+------------------------------------------------------------
+A sleek dark-mode enterprise analytics dashboard reflected on curved black glass in a modern high-rise boardroom at night. Multiple KPI panels, a choropleth map of the Caribbean highlighted in teal, bar charts, and a live time-series graph glow against deep navy. City lights visible through floor-to-ceiling windows behind the glass. No faces, no people. Photorealistic, cinematic, ultra-sharp. Aspect ratio 4:3.
+
+
+IMAGE 3 — Digital Marketing (services.html, Service 03)
+--------------------------------------------------------
+A dark-mode digital marketing performance dashboard filling the entire frame — multi-channel campaign metrics across paid search, social, email, and display. Audience funnel visualization showing awareness down to conversion, real-time ad spend burn charts, click-through rate graphs, and a channel attribution breakdown. All charts and panels rendered in electric teal and white against deep navy. Pure interface, no physical environment, no hardware, no people. Photorealistic UI render. Aspect ratio 4:3.
+
+
+IMAGE 4 — SEO Optimization (services.html, Service 04)
+-------------------------------------------------------
+Holographic search engine results page floating in dark space — glowing rank position markers in electric teal, with HTML tags and structured data schema dissolving into clean ranked results. In the background, a faint web crawl graph pulses with node connections. Deep navy environment, teal and white typography. No people. Photorealistic 3D render, cinematic depth of field. Aspect ratio 4:3.
+
+
+IMAGE 5 — Project Management (services.html, Service 05)
+---------------------------------------------------------
+A crisp dark-mode project management interface filling the entire frame — a detailed Gantt chart across the top half with milestone diamonds and dependency arrows in electric teal, a Kanban sprint board in the middle with color-coded task cards across To Do, In Progress, and Done columns, and a risk heat matrix in the bottom corner. Deep navy background, teal and white UI elements, clean typography. No office, no hardware, no people — pure interface content. Photorealistic UI render. Aspect ratio 4:3.
+
+
+IMAGE 6 — Software Development (services.html, Service 06)
+-----------------------------------------------------------
+Isometric 3D technical blueprint of a cloud software architecture — microservices rendered as glowing geometric modules, API gateway routes as electric teal connector lines, database cylinders, authentication nodes, and load balancers arranged in a precise engineering diagram. Everything floats in deep navy space, no physical environment, no screens, no people. The diagram itself is the subject — clean, technical, and visually striking. Electric teal connection lines, white module outlines, soft glow on active nodes. Photorealistic 3D render. Aspect ratio 4:3.
+
+
+================================================================================
+FILENAMES TO SAVE AS (for easy drop-in to the site):
+  service-ai.jpg
+  service-bi.jpg
+  service-marketing.jpg
+  service-seo.jpg
+  service-pm.jpg
+  service-dev.jpg
+================================================================================
