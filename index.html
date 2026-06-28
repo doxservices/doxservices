@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoxServices | Intelligent DNA</title>
+    <title>DoxServices | Intelligent Digital Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
     <style>
@@ -25,7 +25,7 @@
         
         body {
             color: rgba(255,255,255,0.85);
-            background-color: var(--primary);
+            background: linear-gradient(160deg, #061528 0%, #0a2240 100%);
             line-height: 1.6;
             overflow-x: hidden;
             font-family: 'Open Sans', sans-serif;
@@ -99,7 +99,7 @@
             background-color: var(--accent);
             color: white;
             padding: 10px 25px;
-            border-radius: 30px;
+            border-radius: 5px;
             font-weight: 600;
             transition: var(--transition);
         }
@@ -138,7 +138,7 @@
         .hero-content {
             position: relative;
             max-width: 650px;
-        }
+        animation: heroIn 0.9s ease forwards;$4}$4@keyframes heroIn { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
         
         .hero h1 {
             font-size: 3.5rem;
@@ -161,7 +161,7 @@
             background-color: transparent;
             color: white;
             padding: 10px 25px;
-            border-radius: 30px;
+            border-radius: 5px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             font-weight: 600;
             transition: var(--transition);
@@ -174,7 +174,7 @@
         /* Services Section */
         .services {
             padding: 100px 0;
-            background-color: var(--primary);
+            background: linear-gradient(160deg, #061528 0%, #0a2240 55%, #0d2b4e 100%);
         }
         
         .section-title {
@@ -224,7 +224,7 @@
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px) scale(1.02);
             box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 28px rgba(0,180,216,0.1);
         }
         
@@ -256,7 +256,7 @@
         /* Industries Section */
         .industries {
             padding: 100px 0;
-            background-color: rgba(255,255,255,0.025);
+            background: linear-gradient(200deg, #0a2240 0%, #071832 50%, #0d2b4e 100%);
         }
         
         .industries-grid {
@@ -276,7 +276,7 @@
         }
         
         .industry-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,180,216,0.08);
         }
         
@@ -308,7 +308,7 @@
         /* Confidentiality Section */
         .confidentiality {
             padding: 80px 0;
-            background: var(--primary);
+            background: linear-gradient(160deg, #0a2240 0%, #071832 50%, #112d55 100%);
             color: white;
         }
         
@@ -340,7 +340,7 @@
         /* About Section */
         .about {
             padding: 100px 0;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #071832 0%, #0a2240 60%, #0d2b4e 100%);
         }
         
         .about-content {
@@ -402,8 +402,8 @@
         
         /* CTA Section */
         .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 110px 0;
+            background: linear-gradient(135deg, #071832 0%, var(--secondary) 50%, #071832 100%);
             color: white;
             text-align: center;
         }
@@ -660,14 +660,14 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo"><span class="brandline">Dox<span>Services</span></span><span class="tagline">INTELLIGENT DNA</span></a>
+            <a href="index.html" class="logo"><span class="brandline">Dox<span>Services</span></span><span class="tagline">Intelligent Digital Solutions</span></a>
 
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="pages/services.html">Services</a></li>
                 <li><a href="pages/solutions.html">Solutions</a></li>
                 <li><a href="pages/about.html">About</a></li>
-                <li><a href="pages/contact.html" class="cta-button">Contact Us</a></li>
+                <li><a href="pages/contact.html" class="nav-accent">Contact Us</a></li>
             </ul>
             
             <div class="hamburger">
@@ -959,34 +959,22 @@
             hamburger.querySelector('i').classList.toggle('fa-times');
         });
         
-        // Simple animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            const industryCards = document.querySelectorAll('.industry-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+        // Directional stagger scroll reveal
+        (function(){
+            var dirs = ['from-left','from-below','from-right'];
+            var delays = [0, 0.09, 0.18, 0.27];
+            var els = document.querySelectorAll('.service-card, .industry-card, .stat-item');
+            var io = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){
+                    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
                 });
-            }, { threshold: 0.1 });
-            
-            serviceCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            }, {threshold: 0.08});
+            els.forEach(function(el, i){
+                el.classList.add('reveal', dirs[i % 3]);
+                el.style.transitionDelay = delays[i % 4] + 's';
+                io.observe(el);
             });
-            
-            industryCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-        });
+        })();
     </script>
 
 </body>

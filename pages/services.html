@@ -86,14 +86,14 @@
     <div class="container header-container">
         <a href="../index.html" class="logo">
             <span class="brandline">Dox<span>Services</span></span>
-            <span class="tagline">INTELLIGENT DNA</span>
+            <span class="tagline">Intelligent Digital Solutions</span>
         </a>
         <ul class="nav-links">
             <li><a href="../index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="solutions.html">Solutions</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html" class="cta-button">Contact Us</a></li>
+            <li><a href="contact.html" class="nav-accent">Contact Us</a></li>
         </ul>
         <div class="hamburger">
             <svg id="hamburgerIcon" viewBox="0 0 24 24">
@@ -311,19 +311,25 @@
 
 <script src="../scripts/nav.js"></script>
 
+
 <script>
 (function(){
-    var els = document.querySelectorAll('.card,.service-card,.industry-card,.info-card,.solution-card,.blog-card,.mission-card,.culture-card,.cs-card,.cstat,.detail-item');
+    var dirs = ['from-left','from-below','from-right'];
+    var sel = '.card,.service-card,.industry-card,.info-card,.solution-card,.blog-card,.mission-card,.culture-card,.cs-card,.no-openings,.role-badge';
+    var els = document.querySelectorAll(sel);
     if(!els.length) return;
+    var delays = [0,0.09,0.18,0.27];
     var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-            if(e.isIntersecting){ e.target.classList.add('reveal','visible'); io.unobserve(e.target); }
+            if(e.isIntersecting){
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
         });
-    },{threshold:0.08});
+    },{threshold:0.07});
     els.forEach(function(el,i){
-        el.style.opacity='0';
-        el.style.transform='translateY(24px)';
-        el.style.transition='opacity 0.55s ease '+(i%4*0.09)+'s, transform 0.55s ease '+(i%4*0.09)+'s';
+        el.classList.add('reveal', dirs[i%3]);
+        el.style.transitionDelay = delays[i%4]+'s';
         io.observe(el);
     });
 })();

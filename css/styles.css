@@ -55,27 +55,41 @@ header {
 .cta-button {
     background: var(--accent);
     color: white !important;
-    padding: 9px 22px;
-    border-radius: 30px;
+    padding: 10px 26px;
+    border-radius: 5px;
     font-weight: 600;
     font-size: 0.88rem;
+    letter-spacing: 0.03em;
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
     box-shadow: 0 4px 14px rgba(0,180,216,0.25);
+    display: inline-block;
 }
 .cta-button:hover { background: #00c8f0; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,180,216,0.4); }
 .cta-button::after { display: none; }
 
+/* Nav Contact Us — cyan text only, no button */
+.nav-accent {
+    color: var(--accent) !important;
+    font-weight: 700;
+    transition: color 0.25s, text-shadow 0.25s;
+}
+.nav-accent:hover {
+    color: #00d8ff !important;
+    text-shadow: 0 0 12px rgba(0,180,216,0.5);
+}
+.nav-accent::after { display: none !important; }
+
 .secondary-button {
     background: transparent;
     color: white;
-    padding: 10px 25px;
-    border-radius: 30px;
-    border: 2px solid rgba(255,255,255,0.25);
+    padding: 10px 26px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
     font-weight: 600;
     transition: var(--transition);
     display: inline-block;
 }
-.secondary-button:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.secondary-button:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
 
 .hamburger { display: none; cursor: pointer; }
 .hamburger svg { width: 24px; height: 24px; fill: white; }
@@ -125,7 +139,11 @@ header {
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    transition:
+        transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease,
+        background 0.45s ease;
 }
 
 .card::before {
@@ -138,7 +156,12 @@ header {
     transition: opacity 0.4s ease;
 }
 
-.card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.07); border-color: rgba(0,180,216,0.4); box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 30px rgba(0,180,216,0.08); }
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(0,180,216,0.45);
+    box-shadow: 0 28px 55px rgba(0,0,0,0.45), 0 0 35px rgba(0,180,216,0.1);
+}
 .card:hover::before { opacity: 1; }
 
 .card-icon { width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.7rem; transition: transform 0.4s ease, box-shadow 0.4s ease; }
@@ -206,11 +229,15 @@ footer { background: rgba(4,12,24,0.98); border-top: 1px solid rgba(0,180,216,0.
 .footer-legal a:hover { color: var(--accent); }
 
 /* ── Scroll reveal ── */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal { opacity: 0; transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+.reveal.from-left  { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.from-below { transform: translateY(36px); }
+.reveal.visible    { opacity: 1 !important; transform: translate(0,0) !important; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
 
 /* ── Responsive ── */
 @media (max-width: 992px) {
