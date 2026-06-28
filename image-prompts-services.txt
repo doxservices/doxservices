@@ -42,18 +42,29 @@ photorealistic UI render. Aspect ratio 4:3.
 
 IMAGE 3 — Digital Marketing (services.html, Service 03)
 --------------------------------------------------------
-A full-frame dark-mode digital marketing dashboard. CENTER: a disconnected
-segmented conversion funnel — four floating rectangular segments (Awareness,
-Interest, Consideration, Conversion) stacked vertically with visible gaps between
-each level, each segment narrower than the one above, a downward-pointing teal
-arrow in each gap connecting one segment to the next. RIGHT SIDE: three upward-
-trending line charts with curves climbing steeply to the right, labeled with
-percentage gains. BOTTOM ROW: four metric cards each showing a dollar-sign figure
-(e.g. $2.4M, $18K ROAS) in large white text on steel blue panels with teal
-borders. Background strictly deep navy #0a2240. All UI elements in electric teal
-#00b4d8 and white only. No red, no green, no orange, no yellow, no purple, no
-multicolored icons — exclusively navy, steel blue, teal, and white. No people, no
-physical environment. Photorealistic UI render. Aspect ratio 4:3.
+A full-frame dark-mode digital marketing performance dashboard split into panels.
+
+LEFT PANEL — a multi-line Click-Through Rate chart titled "CLICK-THROUGH RATE
+(CTR)": four upward-trending lines (Paid Search solid, Social Media dashed, Email
+solid, Display dashed) all climbing from left to right on a percentage Y-axis
+(0% to 4%). Below the chart a legend row showing each channel name beside its
+line style and a live CTR figure (e.g. 2.45%, 1.32%, 2.01%, 0.58%). Chart
+background steel blue panel, lines in varying teal intensities and white.
+
+RIGHT PANEL — a five-level audience funnel with connected trapezoid segments
+narrowing from top to bottom, each touching the next with a small downward teal
+arrow between levels. Segments labeled top to bottom: AWARENESS with an
+impressions count, INTEREST with a clicks count, CONSIDERATION with an
+engagements count, INTENT with add-to-cart count, CONVERSION with a conversions
+count. Each trapezoid filled in a teal-to-steel-blue gradient, white label text.
+
+BOTTOM ROW (spanning full width) — four metric cards each displaying a dollar-sign
+revenue figure in large white type on steel blue panels with teal top borders.
+
+Background strictly deep navy #0a2240. All UI elements exclusively in electric
+teal #00b4d8, steel blue #1e4788, and white. No red, no green, no orange, no
+yellow, no purple, no multicolored icons. No people, no physical environment.
+Photorealistic UI render. Aspect ratio 4:3.
 
 
 IMAGE 4 — SEO Optimization (services.html, Service 04)
