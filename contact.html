@@ -539,7 +539,11 @@
                 </div>
                 
                 <!-- Contact Form -->
-                <form class="contact-form" id="contactForm" action="send-email.php" method="POST">
+                <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="8a1f941d-8bc9-44d4-9ee9-444082481a03">
+                    <input type="hidden" name="cc" value="x_hemmings@yahoo.com">
+                    <input type="hidden" name="from_name" value="DoxServices Website">
+                    <input type="hidden" name="botcheck" value="">
                     <div class="form-group">
                         <label for="name">Full Name <span style="color: red;">*</span></label>
                         <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
@@ -817,7 +821,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showAlert('error', 'There was a problem sending your message. Please try again or email us directly at xavier@doxservices.com');
+                showAlert('error', error.message || 'There was a problem sending your message. Please try again or email us directly at xavier@doxservices.com');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `
