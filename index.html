@@ -24,7 +24,7 @@
         }
         
         body {
-            color: var(--dark);
+            color: rgba(255,255,255,0.85);
             background-color: var(--primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -182,14 +182,28 @@
             margin-bottom: 60px;
         }
         
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+            padding: 4px 14px;
+            background: rgba(0,180,216,0.1);
+            border: 1px solid rgba(0,180,216,0.2);
+            border-radius: 20px;
+        }
+
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: white;
             margin-bottom: 15px;
         }
-        
+
         .section-title p {
-            color: #666;
+            color: rgba(255,255,255,0.55);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -217,7 +231,8 @@
         .service-icon {
             width: 70px;
             height: 70px;
-            background: rgba(0, 180, 216, 0.1);
+            background: rgba(0, 180, 216, 0.14);
+            border: 1px solid rgba(0, 180, 216, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -225,7 +240,13 @@
             margin: 0 auto 20px;
             color: var(--accent);
             font-size: 1.8rem;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
+        .service-card:hover .service-icon {
+            transform: scale(1.12);
+            box-shadow: 0 0 22px rgba(0,180,216,0.35);
+        }
+        .service-card p { color: rgba(255,255,255,0.65); }
         
         .service-card h3 {
             margin-bottom: 15px;
@@ -262,15 +283,22 @@
         .industry-icon {
             width: 60px;
             height: 60px;
-            background: rgba(10, 34, 64, 0.1);
+            background: rgba(0, 180, 216, 0.12);
+            border: 1px solid rgba(0, 180, 216, 0.25);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            color: var(--primary);
+            color: var(--accent);
             font-size: 1.5rem;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
+        .industry-card:hover .industry-icon {
+            transform: scale(1.1);
+            box-shadow: 0 0 18px rgba(0,180,216,0.3);
+        }
+        .industry-card p { color: rgba(255,255,255,0.6); }
         
         .industry-card h3 {
             margin-bottom: 15px;
@@ -329,6 +357,11 @@
             font-size: 2.5rem;
             color: white;
             margin-bottom: 20px;
+        }
+        .about-text p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 16px;
+            line-height: 1.8;
         }
         
         .about-stats {
@@ -415,12 +448,11 @@
         }
         
         .footer-links a {
-            opacity: 0.8;
+            color: rgba(255,255,255,0.55);
             transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
-            opacity: 1;
             color: var(--accent);
         }
         
@@ -662,6 +694,7 @@
     <section class="services">
         <div class="container">
             <div class="section-title">
+                <span class="section-label">What We Do</span>
                 <h2>Our Services</h2>
                 <p>Comprehensive solutions to drive your digital success</p>
             </div>
@@ -722,6 +755,7 @@
     <section class="industries">
         <div class="container">
             <div class="section-title">
+                <span class="section-label">Industries We Serve</span>
                 <h2>Trusted by Leading Industries</h2>
                 <p>We deliver exceptional value across diverse sectors</p>
             </div>
@@ -821,6 +855,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
+                    <span class="section-label">Who We Are</span>
                     <h2>The Caribbean's Partner in AI-Powered Growth</h2>
                     <p>With over a decade of experience, we help enterprises across the Caribbean and beyond leverage cutting-edge technology to transform their digital presence and drive measurable results.</p>
                     <p>From regional banks in Jamaica, Trinidad &amp; Tobago, and Barbados to Fortune 100 companies worldwide, our team of data scientists, marketing experts, and AI specialists create customized solutions that address your unique business challenges.</p>
