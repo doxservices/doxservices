@@ -42,29 +42,35 @@ photorealistic UI render. Aspect ratio 4:3.
 
 IMAGE 3 — Digital Marketing (services.html, Service 03)
 --------------------------------------------------------
-A full-frame dark-mode digital marketing performance dashboard split into panels.
+A full-frame dark-mode digital marketing command dashboard, dense with glanceable
+data panels arranged in a professional grid layout. The composition is rich and
+layered — no single chart dominates, everything reads together as a unified
+intelligence view.
 
-LEFT PANEL — a multi-line Click-Through Rate chart titled "CLICK-THROUGH RATE
-(CTR)": four upward-trending lines (Paid Search solid, Social Media dashed, Email
-solid, Display dashed) all climbing from left to right on a percentage Y-axis
-(0% to 4%). Below the chart a legend row showing each channel name beside its
-line style and a live CTR figure (e.g. 2.45%, 1.32%, 2.01%, 0.58%). Chart
-background steel blue panel, lines in varying teal intensities and white.
+TOP ROW — three upward-trending area charts (ROAS, Revenue, Conversions) with
+teal fill beneath each climbing curve, each card showing a large dollar-sign
+headline figure (e.g. $2.4M, $18K, $94K) in bold white above the chart, teal
+top-border accent on each steel blue card.
 
-RIGHT PANEL — a five-level audience funnel with connected trapezoid segments
-narrowing from top to bottom, each touching the next with a small downward teal
-arrow between levels. Segments labeled top to bottom: AWARENESS with an
-impressions count, INTEREST with a clicks count, CONSIDERATION with an
-engagements count, INTENT with add-to-cart count, CONVERSION with a conversions
-count. Each trapezoid filled in a teal-to-steel-blue gradient, white label text.
+MIDDLE LEFT — a multi-line Click-Through Rate chart with four channel lines
+(Paid Search solid, Social Media dashed, Email solid, Display dashed) all trending
+upward left-to-right. Legend row beneath with channel names and live CTR
+percentages (e.g. 2.45%, 1.32%). One of several panels, not the centerpiece.
 
-BOTTOM ROW (spanning full width) — four metric cards each displaying a dollar-sign
-revenue figure in large white type on steel blue panels with teal top borders.
+MIDDLE RIGHT — a compact five-level connected audience funnel (connected trapezoid
+segments narrowing top to bottom: Awareness → Interest → Consideration → Intent →
+Conversion) with a count at each level and small downward teal arrows between
+segments. Teal-to-steel-blue gradient fills, white text. One panel among many.
 
-Background strictly deep navy #0a2240. All UI elements exclusively in electric
-teal #00b4d8, steel blue #1e4788, and white. No red, no green, no orange, no
-yellow, no purple, no multicolored icons. No people, no physical environment.
-Photorealistic UI render. Aspect ratio 4:3.
+BOTTOM ROW — four additional dollar-sign metric cards (CPA, LTV, Ad Spend, ROI)
+on steel blue panels with teal top borders, large white numerals.
+
+Overall feel: a rich, information-dense marketing intelligence dashboard where the
+eye moves across many panels. Background strictly deep navy #0a2240. All charts,
+fills, lines, borders, and icons exclusively in electric teal #00b4d8, steel blue
+#1e4788, and white. No red, no green, no orange, no yellow, no purple, no
+multicolored icons. No people, no physical environment. Photorealistic UI render.
+Aspect ratio 4:3.
 
 
 IMAGE 4 — SEO Optimization (services.html, Service 04)
