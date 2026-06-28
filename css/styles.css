@@ -132,8 +132,10 @@ header {
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
 
 .card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: rgba(6,21,40,0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,180,216,0.18);
     border-radius: 12px;
     padding: 32px 28px;
     text-align: center;
