@@ -651,27 +651,21 @@
 
 
 
-.data-visualization.dna-panel{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 360px;   /* gives the chart room; adjust if you want taller */
-  padding: 8px 0;
-  overflow: hidden;    /* keep it tidy if something overshoots */
-}
-.data-visualization.dna-panel img.chart-figure{
-  max-width: 100% !important;
-  max-height: 100% !important;
-  width: auto !important;   /* prevent horizontal stretch */
-  height: auto !important;  /* prevent vertical stretch */
+.data-visualization.dna-panel {
+  background: none;
+  border-radius: 0;
+  height: auto;
+  min-height: unset;
+  padding: 0;
+  overflow: visible;
   display: block;
 }
-@media (max-width: 768px){
-  .data-visualization.dna-panel{
-    min-height: 280px;
-    padding: 6px 0;
-  }
+.data-visualization.dna-panel img.chart-figure {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  border-radius: 0;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35);
 }
 
 
