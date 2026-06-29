@@ -582,13 +582,32 @@
 
 
 
-.hero.dna-hero { background-attachment: fixed;
-  background-image:
-    linear-gradient(160deg, rgba(11, 37, 69, 0.60) 0%, rgba(17, 68, 119, 0.60) 100%),
-    url('./assets/hero_dna.png');
-  background-repeat: no-repeat, no-repeat;
-  background-size: cover, cover;
-  background-position: center, center;
+.hero.dna-hero {
+  background: #0a2240;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(7,24,50,0.55) 0%, rgba(17,68,119,0.45) 100%);
+  z-index: 1;
+}
+
+.hero.dna-hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 
@@ -690,6 +709,10 @@
 
     <!-- Hero Section -->
     <section class="hero dna-hero">
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="./assets/hero_dna.png">
+            <source src="./assets/hero_dna_video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <h1>Intelligent Digital Solutions</h1>
