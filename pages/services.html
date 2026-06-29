@@ -8,38 +8,56 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
+        /* Alternating parallax section backgrounds — same vignette approach as index */
         .service-detail {
             padding: 100px 0;
+            position: relative;
         }
-        .service-detail:nth-child(odd) { background: var(--primary); }
-        .service-detail:nth-child(even) { background: rgba(255,255,255,0.025); }
+        .service-detail:nth-child(odd) {
+            background:
+                linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.28) 20%, rgba(6,21,40,0.20) 65%, rgba(6,21,40,0.92) 100%),
+                url('../backgrounds/1.png') center/cover fixed;
+        }
+        .service-detail:nth-child(even) {
+            background:
+                linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.25) 20%, rgba(6,21,40,0.18) 65%, rgba(6,21,40,0.92) 100%),
+                url('../backgrounds/2.png') center/cover fixed;
+        }
 
         .service-inner {
             display: flex;
             align-items: center;
             gap: 60px;
         }
-
         .service-detail:nth-child(even) .service-inner { flex-direction: row-reverse; }
 
-        .service-text { flex: 1; }
+        .service-text {
+            flex: 1;
+            background: rgba(6,21,40,0.50);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,180,216,0.15);
+            border-radius: 14px;
+            padding: 36px;
+        }
         .service-visual { flex: 1; }
 
         .service-text .service-num {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.88rem;
+            font-weight: 700;
             color: var(--accent);
-            margin-bottom: 10px;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
         }
 
         .service-text h2 {
             font-size: 2rem;
-            color: var(--primary);
+            color: white;
             margin-bottom: 15px;
         }
 
         .service-text p {
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,0.70);
             margin-bottom: 20px;
             line-height: 1.8;
         }
@@ -47,11 +65,13 @@
         .feature-list { list-style: none; margin-top: 10px; }
         .feature-list li {
             padding: 8px 0;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.72);
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
+        .feature-list li:last-child { border-bottom: none; }
         .feature-list li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
 
         .service-img-wrap {
@@ -60,6 +80,8 @@
             padding-top: 75%;
             overflow: hidden;
             border-radius: 12px;
+            border: 1px solid rgba(0,180,216,0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .service-img {
@@ -69,13 +91,14 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
         }
+        .service-img-wrap:hover .service-img { transform: scale(1.04); }
 
         @media (max-width: 768px) {
             .service-inner,
-            .service-detail:nth-child(even) .service-inner {
-                flex-direction: column;
-            }
+            .service-detail:nth-child(even) .service-inner { flex-direction: column; }
+            .service-text { padding: 24px; }
             .service-text h2 { font-size: 1.6rem; }
         }
     </style>
