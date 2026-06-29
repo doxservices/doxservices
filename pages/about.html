@@ -29,14 +29,16 @@
         .mission-section { padding: 100px 0; background: linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.22) 20%, rgba(6,21,40,0.16) 65%, rgba(6,21,40,0.92) 100%), url('../backgrounds/1.png') center/cover fixed; }
         .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 60px; }
         .mission-card {
-            background: linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.28) 20%, rgba(6,21,40,0.20) 65%, rgba(6,21,40,0.92) 100%), url('../backgrounds/3.jpg') center/cover fixed;
+            background: rgba(6,21,40,0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,180,216,0.18);
             border-radius: 10px;
             padding: 35px 28px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
         }
-        .mission-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.09); }
+        .mission-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.07); border-color: rgba(0,180,216,0.4); box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 28px rgba(0,180,216,0.08); }
         .mission-icon { font-size: 2.2rem; color: var(--accent); margin-bottom: 18px; }
         .mission-card h3 { color: white; margin-bottom: 12px; }
         .mission-card p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; }

@@ -21,13 +21,15 @@
         }
         .cs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; }
         .cs-card {
-            background: linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.28) 20%, rgba(6,21,40,0.20) 65%, rgba(6,21,40,0.92) 100%), url('../backgrounds/3.jpg') center/cover fixed;
+            background: rgba(6,21,40,0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,180,216,0.18);
             border-radius: 12px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.07);
             overflow: hidden;
-            transition: var(--transition);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
         }
-        .cs-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.12); }
+        .cs-card:hover { transform: translateY(-8px) scale(1.01); background: rgba(255,255,255,0.07); border-color: rgba(0,180,216,0.4); box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 28px rgba(0,180,216,0.08); }
         .cs-card-header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             padding: 30px;
@@ -44,7 +46,7 @@
         .cs-block { margin-bottom: 18px; }
         .cs-block h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
         .cs-block p { color: rgba(255,255,255,0.65); font-size: 0.94rem; line-height: 1.7; }
-        .cs-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 22px; padding-top: 22px; border-top: 1px solid #eee; }
+        .cs-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); }
         .cs-metric { text-align: center; }
         .cs-metric .value { font-size: 1.7rem; font-weight: 700; color: var(--accent); font-family: 'Montserrat', sans-serif; }
         .cs-metric .label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
