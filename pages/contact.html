@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | DoxServices</title>
+    <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <style>
         :root {
             --primary: #0a2240;
@@ -732,9 +734,11 @@
             });
             const result = await response.json();
             if (result.success) {
-                showAlert('success', 'Message sent — taking you to book your meeting…');
+                showAlert('success', 'Message sent — please book a meeting below.');
                 contactForm.reset();
-                setTimeout(() => { window.location.href = 'https://calendly.com/xavier-doxservices'; }, 2500);
+                setTimeout(() => {
+                    Calendly.initPopupWidget({ url: 'https://calendly.com/xavier-doxservices' });
+                }, 1000);
             } else {
                 throw new Error(result.message || 'Submission failed');
             }
