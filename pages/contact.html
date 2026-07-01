@@ -680,9 +680,9 @@
 
     function showAlert(type, msg) {
         if (type === 'success') {
+            if (msg) alertSuccess.querySelector('span').textContent = msg;
             alertSuccess.classList.add('show');
             alertError.classList.remove('show');
-            setTimeout(() => alertSuccess.classList.remove('show'), 6000);
         } else {
             errorMessage.textContent = msg || 'Something went wrong. Please try again.';
             alertError.classList.add('show');
@@ -732,8 +732,9 @@
             });
             const result = await response.json();
             if (result.success) {
-                showAlert('success');
+                showAlert('success', 'Message sent — taking you to book your meeting…');
                 contactForm.reset();
+                setTimeout(() => { window.location.href = 'https://calendly.com/xavier-doxservices'; }, 2500);
             } else {
                 throw new Error(result.message || 'Submission failed');
             }
