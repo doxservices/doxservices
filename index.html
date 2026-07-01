@@ -596,6 +596,7 @@
   object-fit: cover;
   z-index: 0;
   opacity: 0.75;
+  transition: opacity 1.5s ease;
 }
 
 .hero-video-overlay {
@@ -703,10 +704,40 @@
 
     <!-- Hero Section -->
     <section class="hero dna-hero">
-        <video class="hero-video-bg" autoplay muted playsinline loop poster="./assets/hero_dna.png">
+        <video id="heroVidA" class="hero-video-bg" autoplay muted playsinline poster="./assets/hero_dna.png">
             <source src="./assets/hero_dna_video.mp4" type="video/mp4">
         </video>
-        <script>document.querySelector('.hero-video-bg').playbackRate = 0.5;</script>
+        <video id="heroVidB" class="hero-video-bg" muted playsinline poster="./assets/hero_dna.png" style="opacity:0">
+            <source src="./assets/hero_dna_video.mp4" type="video/mp4">
+        </video>
+        <script>
+        (function(){
+            var RATE = 0.75, FADE = 1.5;
+            var a = document.getElementById('heroVidA');
+            var b = document.getElementById('heroVidB');
+            var active = a, standby = b, fading = false;
+            a.playbackRate = RATE;
+            function swap() {
+                if (fading) return;
+                fading = true;
+                standby.currentTime = 0;
+                standby.play();
+                standby.playbackRate = RATE;
+                standby.style.opacity = '0.75';
+                active.style.opacity = '0';
+                var prev = active;
+                active = standby;
+                standby = prev;
+                setTimeout(function(){ prev.pause(); fading = false; }, FADE * 1000);
+            }
+            function check(vid) {
+                if (active !== vid || fading || !vid.duration) return;
+                if (vid.duration - vid.currentTime <= FADE) swap();
+            }
+            a.addEventListener('timeupdate', function(){ check(a); });
+            b.addEventListener('timeupdate', function(){ check(b); });
+        })();
+        </script>
         <div class="hero-video-overlay"></div>
         <div class="container">
             <div class="hero-content">
