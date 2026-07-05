@@ -679,53 +679,6 @@
   color: var(--accent);        /* Services -> #00b4d8 */
   font-weight: 700;
 }
-
-/* Industries list — flat two-column layout, distinct from service cards */
-.industries-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 48px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-}
-.industry-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 22px 24px;
-    border-left: 2px solid rgba(0,180,216,0.15);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: border-left-color 0.25s ease, background 0.25s ease;
-}
-.industry-row:hover {
-    border-left-color: var(--accent);
-    background: rgba(0,180,216,0.04);
-}
-.industry-row > i {
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin-top: 3px;
-    flex-shrink: 0;
-    width: 20px;
-    text-align: center;
-    opacity: 0.8;
-}
-.industry-row strong {
-    display: block;
-    color: rgba(255,255,255,0.88);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.92rem;
-    font-weight: 600;
-    margin-bottom: 3px;
-}
-.industry-row span {
-    color: rgba(255,255,255,0.42);
-    font-size: 0.83rem;
-    line-height: 1.5;
-}
-@media (max-width: 640px) {
-    .industries-list { grid-template-columns: 1fr; }
-}
 </style>
 </head>
 <body>
@@ -770,6 +723,7 @@
     <section class="services">
         <div class="container">
             <div class="section-title">
+                <span class="section-label">What We Do</span>
                 <h2>Our Services</h2>
                 <p>Comprehensive solutions to drive your digital success</p>
             </div>
@@ -830,73 +784,82 @@
     <section class="industries">
         <div class="container">
             <div class="section-title">
+                <span class="section-label">Industries We Serve</span>
                 <h2>Trusted by Leading Industries</h2>
                 <p>We deliver exceptional value across diverse sectors</p>
             </div>
             
-            <div class="industries-list">
-                <div class="industry-row">
-                    <i class="fas fa-university"></i>
-                    <div>
-                        <strong>Banking &amp; Finance</strong>
-                        <span>Secure analytics and compliance infrastructure for financial institutions.</span>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-university"></i>
                     </div>
+                    <h3>Banking & Finance</h3>
+                    <p>Secure financial solutions and data analytics for the banking sector.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-tower-cell"></i>
-                    <div>
-                        <strong>Telecommunications</strong>
-                        <span>Network optimization and customer experience for telecom providers.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tower-cell"></i>
                     </div>
+                    <h3>Telecommunications</h3>
+                    <p>Network optimization and customer experience solutions for telecom providers.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-heart-pulse"></i>
-                    <div>
-                        <strong>Healthcare &amp; Life Sciences</strong>
-                        <span>AI-powered diagnostics and healthcare data management.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heart-pulse"></i>
                     </div>
+                    <h3>Healthcare & Life Sciences</h3>
+                    <p>AI-powered diagnostics and healthcare data management solutions.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-gas-pump"></i>
-                    <div>
-                        <strong>Oil &amp; Energy</strong>
-                        <span>Optimization solutions for energy production and distribution.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-gas-pump"></i>
                     </div>
+                    <h3>Oil & Energy</h3>
+                    <p>Optimization solutions for energy production and distribution.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-ship"></i>
-                    <div>
-                        <strong>Shipping &amp; Logistics</strong>
-                        <span>Supply chain optimization and logistics management systems.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-ship"></i>
                     </div>
+                    <h3>Shipping & Logistics</h3>
+                    <p>Supply chain optimization and logistics management systems.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-industry"></i>
-                    <div>
-                        <strong>Manufacturing</strong>
-                        <span>Industrial IoT and smart manufacturing solutions.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
                     </div>
+                    <h3>Manufacturing</h3>
+                    <p>Industrial IoT and smart manufacturing solutions.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-chart-line"></i>
-                    <div>
-                        <strong>Stock Exchanges</strong>
-                        <span>High-frequency trading algorithms and market analysis tools.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3>Stock Exchanges</h3>
+                    <p>High-frequency trading algorithms and market analysis tools.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-plane"></i>
-                    <div>
-                        <strong>Aviation</strong>
-                        <span>Flight optimization and predictive maintenance technology.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-plane"></i>
                     </div>
+                    <h3>Aviation</h3>
+                    <p>Flight optimization, predictive maintenance, and aviation technology solutions.</p>
                 </div>
-                <div class="industry-row">
-                    <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <strong>Private Defense</strong>
-                        <span>Security systems, threat analysis, and defense technology.</span>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
+                    <h3>Private Defense</h3>
+                    <p>Security systems, threat analysis, and defense technology solutions.</p>
                 </div>
             </div>
         </div>
