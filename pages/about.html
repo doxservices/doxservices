@@ -9,22 +9,26 @@
     <link rel="stylesheet" href="../css/styles.css">
     <style>
         .about-section { padding: 100px 0; background: linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.28) 20%, rgba(6,21,40,0.20) 65%, rgba(6,21,40,0.92) 100%), url('../backgrounds/3.jpg') center/cover fixed; }
-        .about-inner { display: flex; align-items: center; gap: 70px; }
+        .about-inner { display: flex; align-items: flex-start; gap: 60px; }
         .about-text { flex: 1; }
-        .about-text h2 { font-size: 2.4rem; color: white; margin-bottom: 20px; }
-        .about-text p { color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 18px; }
-        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; margin-top: 35px; }
+        .about-text h2 { font-size: 2.4rem; color: white; margin-bottom: 22px; }
+        .about-text .lead-para { font-size: 1.05rem; color: rgba(255,255,255,0.88); font-weight: 500; line-height: 1.85; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,180,216,0.18); }
+        .about-text .block-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+        .about-text p { color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 22px; }
+        .about-highlight { background: rgba(0,180,216,0.07); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 20px; margin: 4px 0 28px; color: rgba(255,255,255,0.82); line-height: 1.75; font-size: 0.95rem; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(0,180,216,0.12); }
         .stat-item { text-align: center; }
         .stat-number { font-size: 2.8rem; font-weight: 700; color: var(--accent); font-family: 'Montserrat', sans-serif; }
         .stat-label { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-top: 4px; }
         .about-image {
-            flex: 1;
+            flex: 0 0 44%;
             border: 1px solid rgba(0,180,216,0.18);
             border-radius: 12px;
-            min-height: 380px;
             overflow: hidden;
+            align-self: stretch;
+            min-height: 520px;
         }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 11px; display: block; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 11px; display: block; }
 
         .mission-section { padding: 100px 0; background: linear-gradient(to bottom, rgba(6,21,40,0.92) 0%, rgba(6,21,40,0.22) 20%, rgba(6,21,40,0.16) 65%, rgba(6,21,40,0.92) 100%), url('../backgrounds/1.png') center/cover fixed; }
         .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 60px; }
@@ -113,11 +117,17 @@
         <div class="about-inner">
             <div class="about-text">
                 <h2>The Caribbean's Partner in AI-Powered Transformation</h2>
-                <p>DoxServices was founded on a simple premise: enterprises across the Caribbean and beyond deserve a consulting partner that combines the analytical rigor of a top-tier global strategy firm with the technical depth of a world-class engineering organization.</p>
-                <p>Our roots run deep across the region. We have built trusted relationships with some of the Caribbean's most respected financial institutions, telecommunications providers, energy companies, and government enterprises — across Jamaica, Trinidad &amp; Tobago, Barbados, the Cayman Islands, Guyana, and beyond. We understand the unique regulatory landscape, market dynamics, and competitive pressures that define Caribbean business.</p>
-                <p>Over more than a decade of engagements, we have helped leading Caribbean banks automate compliance and detect fraud, regional telecom operators cut churn, healthcare systems accelerate research, and energy companies slash unplanned downtime — and we bring that same intelligence to enterprises worldwide.</p>
-                <p>Enterprise data analytics and business intelligence programs consistently deliver over 50% year-over-year earnings growth for our clients in the first year of transformation — converting raw data into measurable, compounding financial returns.</p>
-                <p>We operate with complete confidentiality. Our clients trust us with their most sensitive data and strategic initiatives, and we take that responsibility seriously.</p>
+                <p class="lead-para">DoxServices was founded on a simple premise: enterprises across the Caribbean and beyond deserve a consulting partner that combines the analytical rigor of a top-tier global strategy firm with the technical depth of a world-class engineering organization.</p>
+
+                <span class="block-label">Our Reach</span>
+                <p>Our roots run deep across the region. We have built trusted relationships with some of the Caribbean's most respected financial institutions, telecommunications providers, energy companies, and government enterprises — across Jamaica, Trinidad &amp; Tobago, Barbados, the Cayman Islands, Guyana, and beyond.</p>
+
+                <span class="block-label">Our Track Record</span>
+                <p>Over 16+ years we have helped leading Caribbean banks automate compliance and detect fraud, regional telecom operators cut churn, healthcare systems accelerate research, and energy companies slash unplanned downtime — and we bring that same intelligence to enterprises worldwide.</p>
+
+                <div class="about-highlight">
+                    Business intelligence and data analytics programs consistently deliver over 50% year-over-year earnings growth for our clients in the first year of transformation — converting raw data into measurable, compounding financial returns.
+                </div>
                 <div class="about-stats">
                     <div class="stat-item">
                         <div class="stat-number">95%</div>
