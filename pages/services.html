@@ -96,8 +96,9 @@
         .service-img-wrap:hover .service-img { transform: scale(1.05); }
 
         @media (max-width: 768px) {
+            /* image above the copy when stacked */
             .service-inner,
-            .service-detail:nth-child(even) .service-inner { flex-direction: column; gap: 24px; }
+            .service-detail:nth-child(even) .service-inner { flex-direction: column-reverse; gap: 24px; }
             .service-text { padding: 24px; }
             .service-text h2 { font-size: 1.6rem; }
             .service-visual { width: 100%; }
