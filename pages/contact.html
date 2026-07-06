@@ -419,22 +419,32 @@
         }
 
         @media (max-width: 768px) {
+            /* Compact fixed-height header so the slide-in menu lines up exactly */
+            header { height: 66px; }
+            .header-container { height: 66px; padding-top: 0; padding-bottom: 0; }
+            .logo { font-size: 1.35rem; }
+            .logo .tagline { font-size: 0.6rem; }
             .nav-links {
                 position: fixed;
-                top: 76px;
+                top: 66px;
                 left: -100%;
-                background: var(--primary);
+                background: rgba(7,26,54,0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 width: 100%;
-                height: calc(100vh - 76px);
+                height: calc(100vh - 66px);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                transition: 0.4s;
+                transition: left 0.4s ease;
                 gap: 28px;
+                overflow-y: auto;
             }
             .nav-links.active { left: 0; }
             .nav-links li { margin-left: 0; }
-            .hamburger { display: block; }
+            .nav-links a { font-size: 1.05rem; }
+            .hamburger { display: block; padding: 8px; }
+            .contact-page { padding: 95px 0 60px; }
             .contact-right { padding: 32px 24px; }
             .contact-form { grid-template-columns: 1fr; }
             .form-group.full { grid-column: 1; }

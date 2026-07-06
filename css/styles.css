@@ -20,6 +20,8 @@ body {
     overflow-x: hidden;
 }
 
+img { max-width: 100%; }
+
 h1,h2,h3,h4,h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
 a { text-decoration: none; color: inherit; }
 
@@ -129,7 +131,7 @@ header {
 .section-title p { color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; line-height: 1.7; }
 
 /* ── Glass cards ── */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 28px; }
 
 .card {
     background: rgba(6,21,40,0.45);
@@ -248,32 +250,51 @@ footer { background: rgba(4,12,24,0.98); border-top: 1px solid rgba(0,180,216,0.
 }
 
 @media (max-width: 768px) {
+    /* Compact fixed-height header so the slide-in menu lines up exactly */
+    header { height: 66px; }
+    .header-container { height: 66px; padding-top: 0; padding-bottom: 0; }
+    .logo { font-size: 1.35rem; }
+    .logo .tagline { font-size: 0.6rem; }
     .nav-links {
         position: fixed;
-        top: 72px;
+        top: 66px;
         left: -100%;
         background: rgba(7,26,54,0.97);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         width: 100%;
-        height: calc(100vh - 72px);
+        height: calc(100vh - 66px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
         transition: left 0.4s ease;
         gap: 30px;
+        overflow-y: auto;
     }
     .nav-links.active { left: 0; }
     .nav-links li { margin-left: 0; }
+    .nav-links a { font-size: 1.05rem; }
     .nav-links a::after { display: none; }
-    .hamburger { display: block; }
-    .page-hero { padding: 130px 0 70px; }
+    .hamburger { display: block; padding: 8px; }
+
+    /* Fixed-attachment backgrounds are broken/janky on mobile browsers */
+    section, .page-hero { background-attachment: scroll !important; }
+
+    /* Tighter vertical rhythm on phones (overrides per-page inline 80-110px) */
+    section:not(.page-hero) { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .section-title { margin-bottom: 40px; }
+
+    .page-hero { padding: 115px 0 64px !important; }
     .page-hero h1 { font-size: 2rem; }
-    .footer-content { grid-template-columns: 1fr 1fr; }
-    .cta-section h2 { font-size: 2rem; }
+    .page-hero p { font-size: 1rem; }
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .cta-section h2 { font-size: 1.9rem; }
+    .cta-section p { font-size: 0.95rem; }
 }
 
 @media (max-width: 576px) {
     .page-hero h1 { font-size: 1.8rem; }
     .card { padding: 24px 20px; }
+    .card-grid { gap: 20px; }
     .footer-content { grid-template-columns: 1fr; }
 }
